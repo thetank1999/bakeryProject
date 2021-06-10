@@ -46,6 +46,7 @@ public class categoryController extends HttpServlet {
         request.setAttribute("listCate", listCate);
         request.setAttribute("latestProduct", latestProduct);
         request.setAttribute("listP", listById);
+        request.setAttribute("act", cateID);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
 
     }

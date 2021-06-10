@@ -122,8 +122,35 @@ public class dao {
         return null;
     }
 
-    public static void main(String[] args) {
-        dao dao = new dao();
-
+    public productDTO getProductByID(int pID) {
+        String query = "select * from Product \n"
+                + "where id=?";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, pID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new productDTO(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8),
+                        rs.getInt(9),
+                        rs.getBoolean(10));
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
+
+//    public static void main(String[] args) {
+//        dao dao = new dao();
+//        productDTO p = dao.getProductByID(2);
+//        System.out.println(p);
+//    }
 }
