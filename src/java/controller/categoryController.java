@@ -10,6 +10,7 @@ import dto.categoryDTO;
 import dto.productDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author theta
  */
-@WebServlet(name = "homeController", urlPatterns = {"/home"})
-public class homeController extends HttpServlet {
+@WebServlet(name = "categoryController", urlPatterns = {"/category"})
+public class categoryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,17 +37,18 @@ public class homeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //step 1: get data from dao
-        dao dao= new dao();
-        List<productDTO> list = dao.getAllProduct();
+        String cateID = request.getParameter("cateID");
+        dao dao = new dao();
+        List<productDTO> listById = dao.getAllProductByCateID(cateID);
         List<categoryDTO> listCate = dao.getAllCategory();
         productDTO latestProduct = dao.getLastestProduct();
-        // step 2: set data to jsp 
-        request.setAttribute("listP", list);
+        
         request.setAttribute("listCate", listCate);
         request.setAttribute("latestProduct", latestProduct);
+        request.setAttribute("listP", listById);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
-        }
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -50,6 +50,34 @@ public class dao {
         return list;
     }
 
+    public List<productDTO> getAllProductByCateID(String cateID) {
+        List<productDTO> list = new ArrayList<>();
+        String query = "select * from Product \n"
+                + "where CategoryId=?";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, cateID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new productDTO(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8),
+                        rs.getInt(9),
+                        rs.getBoolean(10)));
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
+
     public List<categoryDTO> getAllCategory() {
         List<categoryDTO> list = new ArrayList<>();
         String query = "select * from Category";
@@ -59,8 +87,8 @@ public class dao {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new categoryDTO(
-                        rs.getString(1), 
-                        rs.getString(2), 
+                        rs.getString(1),
+                        rs.getString(2),
                         rs.getString(3)));
             }
         } catch (Exception e) {
@@ -69,11 +97,33 @@ public class dao {
         return list;
     }
 
-//    public static void main(String[] args) {
-//        dao dao= new dao();
-//        List<categoryDTO> list = dao.getAllCategory();
-//        for (categoryDTO p : list){
-//            System.out.println(p);
-//        }
-//    }
+    public productDTO getLastestProduct() {
+        String query = "select top 1 * from Product\n"
+                + "order by product.Id desc";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new productDTO(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5),
+                        rs.getString(6),
+                        rs.getInt(7),
+                        rs.getBoolean(8),
+                        rs.getInt(9),
+                        rs.getBoolean(10));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        dao dao = new dao();
+
+    }
 }
