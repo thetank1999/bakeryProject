@@ -31,33 +31,14 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-3">
-                        <div class="card bg-light mb-3">
-                            <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories </div>
-                            <ul class="list-group category_block">
-                            <c:forEach items="${listCate}" var="c">
-                                <li class="list-group-item text-white ${act == c.id ? "active":""}"><a href="category?cateID=${c.id} ">${c.name}</a></li>
-                                </c:forEach>
-
-                        </ul>
-                    </div>
-                    <div class="card bg-light mb-3">
-                        <div class="card-header bg-success text-white text-uppercase">Latest Product</div>
-                        <div class="card-body">
-                            <!--            <img class="img-fluid" src="" />-->
-                            <h5 class="card-title">${latestProduct.name}</h5>
-                            <p class="card-text">${latestProduct.details}</p>
-                            <p class="bloc_left_price">${latestProduct.salePrice}</p>
-                        </div>
-                    </div>
-                </div>
+                <jsp:include page="Left.jsp"></jsp:include>
 
                 <div class="col-sm-9">
                     <div class="row">
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
-                                    <!--                                    <img class="card-img-top" src="o." alt="Card image cap">-->
+                                    <img class="card-img-top" src="${o.thumbNailLink}" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title show_txt"><a href="detail?pID=${o.id}" title="View Product">${o.name}</a></h4>
                                         <p class="card-text show_txt">${o.details}

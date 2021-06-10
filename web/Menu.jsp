@@ -2,7 +2,7 @@
 <!--begin of menu-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="home">Cake</a>
+        <a class="navbar-brand" href="home">Home Page</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,8 +45,8 @@
 </nav>
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Siêu thị Banh chất lượng cao</h1>
-        <p class="lead text-muted mb-0">Uy tín tạo nên thương hiệu với hơn 5 năm cung cấp các sản phầm</p>
+        <h1 class="jumbotron-heading">Kiều Đại Nhân and Friends' Bakery chain of Stores</h1>
+        <p class="lead text-muted mb-0">High quality products only</p>
     </div>
 </section>
 <!--end of menu-->

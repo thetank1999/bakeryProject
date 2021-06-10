@@ -49,46 +49,27 @@
                 <div class="row">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-3">
-                                <div class="card bg-light mb-3">
-                                    <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories </div>
-                                    <ul class="list-group category_block">
-                                    <c:forEach items="${listCate}" var="c">
-                                        <li class="list-group-item text-white ${act == c.id ? "active":""}"><a href="category?cateID=${c.id}">${c.name}</a></li>
-                                        </c:forEach>
-
-                                </ul>
-                            </div>
-                            <div class="card bg-light mb-3">
-                                <div class="card-header bg-success text-white text-uppercase">Latest Product</div>
-                                <div class="card-body">
-                                    <!--            <img class="img-fluid" src="" />-->
-                                    <h5 class="card-title">${latestProduct.name}</h5>
-                                    <p class="card-text">${latestProduct.details}</p>
-                                    <p class="bloc_left_price">${latestProduct.salePrice}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="container">
-                                <div class="card">
-                                    <div class="row">
-                                        <aside class="col-sm-5 border-right">
-                                            <article class="gallery-wrap"> 
-                                                <div class="img-big-wrap">
-<!--                                                    <div> <a href="#"><img src="https://canary.contestimg.wish.com/api/webimage/5c4a05a08b26e56dcf17a643-normal.jpg?cache_buster=6d01b751858e14e68932bb234cdc44c1"></a></div>-->
-                                                </div> <!-- slider-product.// -->
-                                                <div class="img-small-wrap">
-                                                </div> <!-- slider-nav.// -->
-                                            </article> <!-- gallery-wrap .end// -->
-                                        </aside>
-                                        <aside class="col-sm-7">
-                                            <article class="card-body p-5">
-                                                <h3 class="title mb-3">${p.name}</h3>
+                        <jsp:include page="Left.jsp"></jsp:include>
+                            <div class="col-sm-9">
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="row">
+                                            <aside class="col-sm-5 border-right">
+                                                <article class="gallery-wrap"> 
+                                                    <div class="img-big-wrap">
+                                                        <div> <a href="#"><img src="${p.thumbNailLink}" alt="Card image cap"></a></div>
+                                                    </div> <!-- slider-product.// -->
+                                                    <div class="img-small-wrap">
+                                                    </div> <!-- slider-nav.// -->
+                                                </article> <!-- gallery-wrap .end// -->
+                                            </aside>
+                                            <aside class="col-sm-7">
+                                                <article class="card-body p-5">
+                                                    <h3 class="title mb-3">${p.name}</h3>
 
                                                 <p class="price-detail-wrap"> 
                                                     <span class="price h3 text-warning"> 
-                                                        <span class="currency">VND</span><span class="num">${p.originalSalePrice}</span>
+                                                        <span class="currency">VND: </span><span class="num">${p.originalSalePrice}</span>
                                                     </span> 
                                                 </p> <!-- price-detail-wrap .// -->
                                                 <dl class="item-property">
@@ -102,7 +83,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-5">
                                                         <dl class="param param-inline">
-                                                            <dt>Quantity: ${p.stock} </dt>
+                                                            <dt>In Stock: ${p.stock} </dt>
                                                             <dd>
                                                                 <select class="form-control form-control-sm" style="width:70px;">
                                                                     <option> 1 </option>
