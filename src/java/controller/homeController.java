@@ -42,7 +42,7 @@ public class homeController extends HttpServlet {
         List<categoryDTO> listCate = dao.getAllCategory();
         // step 2: set data to jsp 
         request.setAttribute("listP", list);
-         request.setAttribute("listCate", listCate);
+        request.setAttribute("listCate", listCate);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
         
         
