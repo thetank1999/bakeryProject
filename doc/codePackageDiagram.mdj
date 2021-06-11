@@ -3864,6 +3864,24 @@
 					]
 				}
 			]
+		},
+		{
+			"_type": "UMLModel",
+			"_id": "AAAAAAF5+SmUwyncx9A=",
+			"_parent": {
+				"$ref": "AAAAAAFF+h6SjaM2Hec="
+			},
+			"name": "Model3",
+			"ownedElements": [
+				{
+					"_type": "UMLPackageDiagram",
+					"_id": "AAAAAAF5+SmUwyndEdo=",
+					"_parent": {
+						"$ref": "AAAAAAF5+SmUwyncx9A="
+					},
+					"name": "PackageDiagram1"
+				}
+			]
 		}
 	]
 }

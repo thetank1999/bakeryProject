@@ -1,5 +1,5 @@
 
-package dto;
+package user;
 
 import java.sql.Date;
 

@@ -5,9 +5,9 @@
  */
 package controller;
 
-import dao.dao;
-import dto.categoryDTO;
-import dto.productDTO;
+
+import category.categoryDTO;
+import product.productDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import product.productDAO;
 
 /**
  *
@@ -38,7 +39,7 @@ public class categoryController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String cateID = request.getParameter("cateID");
-        dao dao = new dao();
+        productDAO dao = new productDAO();
         List<productDTO> listById = dao.getAllProductByCateID(cateID);
         List<categoryDTO> listCate = dao.getAllCategory();
         productDTO latestProduct = dao.getLastestProduct();

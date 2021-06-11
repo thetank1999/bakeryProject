@@ -41,6 +41,8 @@ public class signUpController extends HttpServlet {
             String mess = "Incorrect repeat password! Please re enter it.";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        }else if (){
+            
         }
     }
 

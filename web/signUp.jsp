@@ -15,7 +15,9 @@
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
         <title>Sign Up Form</title>
         <style>
-            vis{display: block}
+            vis{display: block;
+            width: 30vw;
+            }
         </style>
     </head>
     <body>

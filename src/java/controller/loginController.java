@@ -5,8 +5,8 @@
  */
 package controller;
 
-import dao.dao;
-import dto.userDTO;
+
+import user.userDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import user.userDAO;
 
 /**
  *
@@ -36,7 +37,7 @@ public class loginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String userName= request.getParameter("user");
         String passWord= request.getParameter("pass");
-        dao dao= new dao();
+        userDAO dao= new userDAO();
         userDTO u = dao.login(userName, passWord);
         
         if(u == null){
