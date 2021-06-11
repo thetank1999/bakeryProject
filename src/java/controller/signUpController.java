@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import user.validation;
 
 /**
  *
@@ -36,13 +37,32 @@ public class signUpController extends HttpServlet {
         String userID = request.getParameter("user");
         String pass = request.getParameter("pass");
         String repass = request.getParameter("repass");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String gender = request.getParameter("userGender");
+        String address = request.getParameter("address");
+        validation val = new validation();
+        
         
         if (!pass.equals("repass")){
             String mess = "Incorrect repeat password! Please re enter it.";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (){
-            
+        }else if (!val.isValidEmail(userID)){
+            String mess = "Invalid Email Address! Please re enter it.";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        }else if (!val.isValidPhoneNumber(phoneNumber)){
+            String mess = "Invalid Phone Number! Please re enter it. ";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        }else if (!val.isValidFullName(fullName)){
+            String mess = "Invalid Full Name! Please re enter it. ";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        }else if (!val.isValidAddress(address)){
+            String mess = "Invalid Address! Please re enter it. ";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
         }
     }
 

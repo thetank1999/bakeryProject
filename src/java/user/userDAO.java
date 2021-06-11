@@ -50,6 +50,42 @@ public class userDAO {
         }
         return null;
     }
+    public boolean getUserExistency(String email){
+        String query = "select * from [user]\n"
+                + "where [email]= ?\n";
+        userDTO u = new userDTO();
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                u= new userDTO(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9),
+                        rs.getString(10));
+                
+                if (u!= null)
+                    return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
+//    public static void main(String[] args) {
+//        String a = "admin@fpt.edu.vn";
+//        userDAO dao = new userDAO();
+//        System.out.println(dao.getUserExistency(a));
+//    }
     
     public List<userDTO> getAllUser() {
         List<userDTO> list = new ArrayList<>();
