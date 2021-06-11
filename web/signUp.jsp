@@ -16,17 +16,21 @@
         <title>Sign Up Form</title>
         <style>
             vis{display: block;
-            width: 30vw;
+                width: 30vw;
             }
         </style>
     </head>
     <body>
-        <div id="" class="vis"> 
+        <div id="vis"> 
             <form action="signUp" method="post" class="form-signup">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
                 <p class="text-danger">${mess}</p>
-                <input name="fullName" type="text" id="userFullName" class="form-control" placeholder="Full Name" required="" autofocus="">
-                <input name="user" type="text" id="user-name" class="form-control" placeholder="User name" required="" autofocus="">
+                <input name="fullName" type="text" id="userFullName" class="form-control" placeholder="Full Name" required autofocus="">
+                <input name="address" type="text" id="address" class="form-control" placeholder="Address" required autofocus="">
+                <input name="phoneNumber" type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" required autofocus="">
+                <input type="radio" id="userGender" name="gender" value="male"> Male
+                <input type="radio" id="userGender" name="gender" value="female"> Female
+                <input name="user" type="text" id="user-name" class="form-control" placeholder="Email" required= autofocus="">
                 <input name="pass" type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
                 <input name="repass" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
 
@@ -41,22 +45,22 @@
         <script>
             function toggleResetPswd(e) {
                 e.preventDefault();
-                $('#logreg-forms .form-signin').toggle() // display:block or none
-                $('#logreg-forms .form-reset').toggle() // display:block or none
+//                $('#logreg-forms .form-signin').toggle() // display:block or none
+//                $('#logreg-forms .form-reset').toggle() // display:block or none
             }
 
             function toggleSignUp(e) {
                 e.preventDefault();
-                $('#logreg-forms .form-signin').toggle(); // display:block or none
-                $('#logreg-forms .form-signup').toggle(); // display:block or none
+//                $('#logreg-forms .form-signin').toggle(); // display:block or none
+//                $('#logreg-forms .form-signup').toggle(); // display:block or none
             }
 
             $(() => {
-                // Login Register Form
-                $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-                $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-                $('#logreg-forms #btn-signup').click(toggleSignUp);
-                $('#logreg-forms #cancel_signup').click(toggleSignUp);
+//                // Login Register Form
+//                $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+//                $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+//                $('#logreg-forms #btn-signup').click(toggleSignUp);
+//                $('#logreg-forms #cancel_signup').click(toggleSignUp);
             })
         </script>
     </body>
