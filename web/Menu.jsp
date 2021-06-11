@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#">Manager Product</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Hello</a>
+                    <a class="nav-link" href="#">Hello ${userData.fullName}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Logout</a>

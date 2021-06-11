@@ -5,8 +5,6 @@
  */
 package controller;
 
-import dao.dao;
-import dto.userDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author theta
  */
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "signUpController", urlPatterns = {"/signUp"})
+public class signUpController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,20 +32,15 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String userName= request.getParameter("user");
-        String passWord= request.getParameter("pass");
-        dao dao= new dao();
-        userDTO u = dao.login(userName, passWord);
+        String fullName = request.getParameter("fullName");
+        String userID = request.getParameter("user");
+        String pass = request.getParameter("pass");
+        String repass = request.getParameter("repass");
         
-        if(u == null){
-            String mess = "   Wrong user ID or password!"
-                    + " Please enter again.";
+        if (!pass.equals("repass")){
+            String mess = "Incorrect repeat password! Please re enter it.";
             request.setAttribute("mess", mess);
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }else {
-            request.setAttribute("userData", u);
-            request.getRequestDispatcher("home").forward(request, response);
-            
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
         }
     }
 
