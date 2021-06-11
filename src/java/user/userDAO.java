@@ -6,15 +6,14 @@
 package user;
 
 import database.dBContext;
-import database.dBContext;
-import category.categoryDTO;
-import product.productDTO;
-import user.userDTO;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+//import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import static user.validation.encryptPassword;
 /**
  *
  * @author theta
@@ -79,6 +78,32 @@ public class userDAO {
         } catch (Exception e) {
         }
         return false;
+    }
+    
+    public void signUp(String email, String password, String address, String fullName, String phoneNumber, String gender) throws NoSuchAlgorithmException{
+        // String email, String passwor, String address, String fullName, String phoneNumber, String gender, Date date 
+        String encryptedPass = encryptPassword(password);
+        long millis=System.currentTimeMillis();   
+        java.sql.Date date=new java.sql.Date(millis);
+        String query = "insert into [user]\n"
+                + "values(?, ?, ? , ?, ?, ?, ?, ?, ?, ?)";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+            ps.setString(2, encryptedPass);
+            ps.setString(3, null);
+            ps.setString(4, address);
+            ps.setString(5, fullName);
+            ps.setString(6, phoneNumber);
+            ps.setString(7, gender);
+            ps.setDate(8, date);
+            ps.setInt(9, 1);
+            ps.setString(10, "us");
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
     }
     
 //    public static void main(String[] args) {

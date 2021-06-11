@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import user.userDAO;
 import user.validation;
 
 /**
@@ -41,7 +42,7 @@ public class signUpController extends HttpServlet {
         String gender = request.getParameter("userGender");
         String address = request.getParameter("address");
         validation val = new validation();
-        
+        userDAO dao = new userDAO();
         
         if (!pass.equals("repass")){
             String mess = "Incorrect repeat password! Please re enter it.";
@@ -63,6 +64,12 @@ public class signUpController extends HttpServlet {
             String mess = "Invalid Address! Please re enter it. ";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        }else if (dao.getUserExistency(userID)){
+            String mess = "Existed Email Address! Please choose another email address. ";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        }else {
+            
         }
     }
 
