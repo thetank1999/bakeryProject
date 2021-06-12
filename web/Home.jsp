@@ -44,9 +44,14 @@
                                         <p class="card-text show_txt">${o.details}
                                         </p>
                                         <div class="row">
-                                            <div class="col">
-                                                <p class="btn btn-danger btn-block">${o.originalSalePrice}</p>
+                                            <div>
+                                                <p><del>${o.originalSalePrice}</del></p> 
+<!--                                                class="btn btn-danger btn-block"-->
+                                                
+                                                <p class="btn btn-danger btn-block">${o.salePrice}</p>
+                                            
                                             </div>
+                                            
                                             <div class="col">
                                                 <a href="#" class="btn btn-success btn-block">Add to cart</a>
                                             </div>

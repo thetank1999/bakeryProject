@@ -16,6 +16,7 @@
                                     <img class="img-fluid" src="${latestProduct.thumbNailLink}" alt="Card image cap" />
                                     <h5 class="card-title">${latestProduct.name}</h5>
                                     <p class="card-text">${latestProduct.details}</p>
+                                    <p class="bloc_left_price"><del>${latestProduct.originalSalePrice}</del></p>
                                     <p class="bloc_left_price">${latestProduct.salePrice}</p>
                                 </div>
                             </div>

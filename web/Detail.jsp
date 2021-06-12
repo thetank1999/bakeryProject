@@ -69,7 +69,8 @@
 
                                                 <p class="price-detail-wrap"> 
                                                     <span class="price h3 text-warning"> 
-                                                        <span class="currency">VND: </span><span class="num">${p.originalSalePrice}</span>
+                                                        <span class="currency">VND: </span><span class="num"><del>${p.originalSalePrice}</del></span> <br>
+                                                        <span class="currency">VND: </span><span class="num">${p.salePrice}</span>
                                                     </span> 
                                                 </p> <!-- price-detail-wrap .// -->
                                                 <dl class="item-property">

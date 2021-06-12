@@ -7,6 +7,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +35,7 @@ public class signUpController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         String fullName = request.getParameter("fullName");
         String userID = request.getParameter("user");
@@ -44,32 +47,36 @@ public class signUpController extends HttpServlet {
         validation val = new validation();
         userDAO dao = new userDAO();
         
-        if (!pass.equals("repass")){
+        if (!pass.equals(repass)){
             String mess = "Incorrect repeat password! Please re enter it.";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (!val.isValidEmail(userID)){
+        }else if (!validation.isValidEmail(userID)){
             String mess = "Invalid Email Address! Please re enter it.";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (!val.isValidPhoneNumber(phoneNumber)){
+        }else if (!validation.isValidPhoneNumber(phoneNumber)){
             String mess = "Invalid Phone Number! Please re enter it. ";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (!val.isValidFullName(fullName)){
-            String mess = "Invalid Full Name! Please re enter it. ";
-            request.setAttribute("mess", mess);
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (!val.isValidAddress(address)){
-            String mess = "Invalid Address! Please re enter it. ";
-            request.setAttribute("mess", mess);
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+//        }else if (!validation.isValidFullName(fullName)){
+//            String mess = "Invalid Full Name! Please re enter it. ";
+//            request.setAttribute("mess", mess);
+//            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+//        }else if (!validation.isValidAddress(address)){
+//            String mess = "Invalid Address! Please re enter it. ";
+//            request.setAttribute("mess", mess);
+//            request.getRequestDispatcher("signUp.jsp").forward(request, response);
         }else if (dao.getUserExistency(userID)){
             String mess = "Existed Email Address! Please choose another email address. ";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
         }else {
+            dao.signUp(userID, pass, address, fullName, phoneNumber, gender);
             
+            String mess = "Sign up succesfully! Please Log in to continue.";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
     }
 
@@ -85,7 +92,11 @@ public class signUpController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(signUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -99,7 +110,11 @@ public class signUpController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(signUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
