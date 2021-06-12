@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--begin of menu-->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -9,24 +11,42 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
             <ul class="navbar-nav m-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Manager Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Manager Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Hello ${userData.fullName}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Login.jsp">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="signUp.jsp">Sign Up</a>
-                </li>
+
+                <c:if test="${sessionScope.user.roleID == 1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Account</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user.roleID == 2}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Product</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user.roleID == 3}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Manage Marketing</a>
+                    </li>
+                </c:if>   
+                <c:if test="${sessionScope.user != null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Hello ${sessionScope.user.fullName}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="logOut">Logout</a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user == null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Login.jsp">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signUp.jsp">Sign Up</a>
+                    </li>
+                </c:if>
             </ul>
 
             <form action="search" method="post" class="form-inline my-2 my-lg-0">
@@ -48,7 +68,7 @@
 </nav>
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Kiều Đại Nhân and Friends' Bakery chain of Stores</h1>
+        <h1 class="jumbotron-heading">SWP Bakery </h1>
         <p class="lead text-muted mb-0">High quality products only</p>
     </div>
 </section>

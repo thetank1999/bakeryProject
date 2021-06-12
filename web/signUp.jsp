@@ -28,8 +28,9 @@
                 <input name="fullName" type="text" id="userFullName" class="form-control" placeholder="Full Name" required autofocus="">
                 <input name="address" type="text" id="address" class="form-control" placeholder="Address" required autofocus="">
                 <input name="phoneNumber" type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" required autofocus="">
-                <input type="radio" id="userGender" name="gender" value="male"> Male
-                <input type="radio" id="userGender" name="gender" value="female"> Female
+<!--                <input type="radio" id="userGender" name="gender" value="male"> Male
+                <input type="radio" id="userGender" name="gender" value="female" checked> Female
+                <input type="radio" id="userGender" name="gender" value="other"> Other-->
                 <input name="user" type="text" id="user-name" class="form-control" placeholder="Email" required= autofocus="">
                 <input name="pass" type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
                 <input name="repass" type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">

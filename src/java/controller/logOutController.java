@@ -5,27 +5,21 @@
  */
 package controller;
 
-
-import user.userDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import user.userDAO;
 
 /**
  *
  * @author theta
  */
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
-public class loginController extends HttpServlet {
+@WebServlet(name = "logOutController", urlPatterns = {"/logOut"})
+public class logOutController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,24 +31,11 @@ public class loginController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, NoSuchAlgorithmException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String userName= request.getParameter("user");
-        String passWord= request.getParameter("pass");
-        userDAO dao= new userDAO();
-        userDTO u = dao.login(userName, passWord);
-        
-        if(u == null){
-            String mess = "   Wrong user ID or password!"
-                    + " Please enter again.";
-            request.setAttribute("mess", mess);
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }else {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", u);
-            request.getRequestDispatcher("home").forward(request, response);
-            
-        }
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        response.sendRedirect("home");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,11 +50,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -87,11 +64,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

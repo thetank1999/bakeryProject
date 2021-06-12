@@ -15,9 +15,9 @@ public class userDTO {
     private String gender;
     private Date creationDate;
     private int status;
-    private String roldeID;
+    private int roleID;
 
-    public userDTO(String email, String password, String avatarLink, String address, String fullName, String phoneNumber, String gender, Date creationDate, int status, String roldeID) {
+    public userDTO(String email, String password, String avatarLink, String address, String fullName, String phoneNumber, String gender, Date creationDate, int status, int roleID) {
         this.email = email;
         this.password = password;
         this.avatarLink = avatarLink;
@@ -27,9 +27,8 @@ public class userDTO {
         this.gender = gender;
         this.creationDate = creationDate;
         this.status = status;
-        this.roldeID = roldeID;
+        this.roleID = roleID;
     }
-    
     public userDTO(){
         
     }
@@ -106,18 +105,13 @@ public class userDTO {
         this.status = status;
     }
 
-    public String getRoldeID() {
-        return roldeID;
+    public int getRoleID() {
+        return roleID;
     }
 
-    public void setRoldeID(String roldeID) {
-        this.roldeID = roldeID;
+    public void setRoleID(int roleID) {
+        this.roleID = roleID;
     }
 
-    @Override
-    public String toString() {
-        return "userDTO{" + "email=" + email + ", password=" + password + ", avatarLink=" + avatarLink + ", address=" + address + ", fullName=" + fullName + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", creationDate=" + creationDate + ", status=" + status + ", roldeID=" + roldeID + '}';
-    }
-    
     
 }

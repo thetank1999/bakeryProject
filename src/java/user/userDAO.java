@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import static user.validation.encryptPassword;
 
@@ -49,13 +51,13 @@ public class userDAO {
                         rs.getString(7),
                         rs.getDate(8),
                         rs.getInt(9),
-                        rs.getString(10));
+                        rs.getInt(10));
             }
         } catch (Exception e) {
         }
         return null;
     }
-    
+
 //    public static void main(String[] args) throws NoSuchAlgorithmException {
 //        userDAO dao = new userDAO();
 //        String userName = "thanhTest3@fpt.edu.vn";
@@ -63,7 +65,6 @@ public class userDAO {
 //        userDTO u = dao.login(userName, passWord);
 //        System.out.println(u);
 //    }
-
     public boolean getUserExistency(String email) {
         String query = "select * from [user]\n"
                 + "where [email]= ?\n";
@@ -85,7 +86,7 @@ public class userDAO {
                         rs.getString(7),
                         rs.getDate(8),
                         rs.getInt(9),
-                        rs.getString(10));
+                        rs.getInt(10));
 
                 if (u != null) {
                     return true;
@@ -99,15 +100,16 @@ public class userDAO {
     public Date getCurrentDate() {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
+
         return date;
     }
 
-    public void signUp(String email, String password, String address, String fullName, String phoneNumber, String gender) throws NoSuchAlgorithmException {
-        // String email, String passwor, String address, String fullName, String phoneNumber, String gender
+    public void signUp(String email, String password, String address, String fullName, String phoneNumber) throws NoSuchAlgorithmException {
+        // String email, String passwor, String address, String fullName, String phoneNumber
         String encryptedPass = encryptPassword(password);
         userDAO dao = new userDAO();
         String query = "insert into [user]\n"
-                + "values (?, ?, NULL, ?, ?, ?, ?, ? , 1, 'us');";
+                + "values (?, ?, NULL, ?, ?, ?, NULL, ? , 1, 0);";
         try {
             conn = new dBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -116,43 +118,41 @@ public class userDAO {
             ps.setString(3, address);
             ps.setString(4, fullName);
             ps.setString(5, phoneNumber);
-            ps.setString(6, gender);
-            ps.setDate(7, dao.getCurrentDate());
-//            
+            ps.setDate(6, dao.getCurrentDate());
             rs = ps.executeQuery();
 
         } catch (Exception e) {
         }
     }
 
-//    public void addRole(String roleID, String Name) {
+//    public void addRole(int roleID, String Name) {
 //        String query = "insert into [role]\n"
 //                + " values (?, ?)";
 //        try {
 //            conn = new dBContext().getConnection();
 //            ps = conn.prepareStatement(query);
-//            ps.setString(1, roleID);
+//            ps.setInt(1, roleID);
 //            ps.setString(2, Name);
 //            rs = ps.executeQuery();
 //        } catch (Exception e) {
 //        }
+//
 //    }
 
-//    public static void main(String[] args) throws NoSuchAlgorithmException {
-//        userDAO dao = new userDAO();
-//        String password = "12345678";
-//        String enPass = encryptPassword(password);
-//        String email = "thanhTest3@fpt.edu.vn";
-//        String address = "tpHCM";
-//        String fullName = "thanh";
-//        String phoneNumber = "0397318617";
-//        String gender = "male";
-//        dao.signUp(email, password, address, fullName, phoneNumber, gender);
-//        //dao.addRole(password, enPass);
-//        Date date = dao.getCurrentDate();
-//        System.out.println(date);
-//        System.out.println(enPass);
-    
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        userDAO dao = new userDAO();
+        String password = "12345678";
+        String enPass = encryptPassword(password);
+        String email = "thanhTest2@fpt.edu.vn";
+        String address = "tpHCM";
+        String fullName = "thanh";
+        String phoneNumber = "0397318617";
+        dao.signUp(email, password, address, fullName, phoneNumber);
+        // dao.addRole(6, enPass);
+        Date date = dao.getCurrentDate();
+        System.out.println(date);
+        System.out.println(enPass);
+    }
 
 //    public static void main(String[] args) {
 //        String a = "admin@fpt.edu.vn";
@@ -177,11 +177,10 @@ public class userDAO {
 //                        rs.getString(7),
 //                        rs.getDate(8),
 //                        rs.getInt(9),
-//                        rs.getString(10)));
+//                        rs.getInt(10)));
 //            }
 //        } catch (Exception e) {
 //        }
 //        return list;
 //    }
-
 }

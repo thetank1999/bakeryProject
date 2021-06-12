@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package product;
+
 import database.dBContext;
 import category.categoryDTO;
 import product.productDTO;
@@ -19,6 +20,7 @@ import java.util.List;
  * @author theta
  */
 public class productDAO {
+
     Connection conn = null; // connect to sql Server
     PreparedStatement ps = null;// execute SQL query
     ResultSet rs = null;// return data
@@ -32,16 +34,19 @@ public class productDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new productDTO(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getBoolean(8),
-                        rs.getInt(9),
-                        rs.getBoolean(10)));
+                        rs.getInt(1), //id
+                        rs.getString(2), // name
+                        rs.getString(3), // cateID
+                        rs.getString(4), //thumbnail
+                        rs.getString(5), //uploader
+                        rs.getInt(6), // lowerPrice
+                        rs.getInt(7), // higherPrice
+                        rs.getString(8), // detail
+                        rs.getBoolean(9), // status
+                        rs.getBoolean(10),// saleStatus
+                        rs.getInt(11) // stock
+                        ));
+                        
             }
         } catch (Exception e) {
 
@@ -60,23 +65,25 @@ public class productDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new productDTO(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getBoolean(8),
-                        rs.getInt(9),
-                        rs.getBoolean(10)));
+                        rs.getInt(1), //id
+                        rs.getString(2), // name
+                        rs.getString(3), // cateID
+                        rs.getString(4), //thumbnail
+                        rs.getString(5), //uploader
+                        rs.getInt(6), // lowerPrice
+                        rs.getInt(7), // higherPrice
+                        rs.getString(8), // detail
+                        rs.getBoolean(9), // status
+                        rs.getBoolean(10),// saleStatus
+                        rs.getInt(11) // stock
+                        ));
             }
         } catch (Exception e) {
 
         }
         return list;
     }
-    
+
     public List<categoryDTO> getAllCategory() {
         List<categoryDTO> list = new ArrayList<>();
         String query = "select * from Category";
@@ -105,16 +112,18 @@ public class productDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 return new productDTO(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getBoolean(8),
-                        rs.getInt(9),
-                        rs.getBoolean(10));
+                        rs.getInt(1), //id
+                        rs.getString(2), // name
+                        rs.getString(3), // cateID
+                        rs.getString(4), //thumbnail
+                        rs.getString(5), //uploader
+                        rs.getInt(6), // lowerPrice
+                        rs.getInt(7), // higherPrice
+                        rs.getString(8), // detail
+                        rs.getBoolean(9), // status
+                        rs.getBoolean(10),// saleStatus
+                        rs.getInt(11) // stock
+                        );
             }
         } catch (Exception e) {
         }
@@ -131,16 +140,18 @@ public class productDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 return new productDTO(
-                        rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getString(6),
-                        rs.getInt(7),
-                        rs.getBoolean(8),
-                        rs.getInt(9),
-                        rs.getBoolean(10));
+                        rs.getInt(1), //id
+                        rs.getString(2), // name
+                        rs.getString(3), // cateID
+                        rs.getString(4), //thumbnail
+                        rs.getString(5), //uploader
+                        rs.getInt(6), // lowerPrice
+                        rs.getInt(7), // higherPrice
+                        rs.getString(8), // detail
+                        rs.getBoolean(9), // status
+                        rs.getBoolean(10),// saleStatus
+                        rs.getInt(11) // stock
+                        );
             }
         } catch (Exception e) {
         }

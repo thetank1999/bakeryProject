@@ -6,7 +6,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +37,7 @@ public class signUpController extends HttpServlet {
             throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
         String fullName = request.getParameter("fullName");
-        String userID = request.getParameter("user");
+        String userEmail = request.getParameter("user");
         String pass = request.getParameter("pass");
         String repass = request.getParameter("repass");
         String phoneNumber = request.getParameter("phoneNumber");
@@ -46,19 +45,31 @@ public class signUpController extends HttpServlet {
         String address = request.getParameter("address");
         validation val = new validation();
         userDAO dao = new userDAO();
-        
-        if (!pass.equals(repass)){
+
+        if (!pass.equals(repass)) {
             String mess = "Incorrect repeat password! Please re enter it.";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (!validation.isValidEmail(userID)){
+        } else if (!validation.isValidEmail(userEmail)) {
             String mess = "Invalid Email Address! Please re enter it.";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (!validation.isValidPhoneNumber(phoneNumber)){
+        } else if (!validation.isValidPhoneNumber(phoneNumber)) {
             String mess = "Invalid Phone Number! Please re enter it. ";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        } else if (dao.getUserExistency(userEmail)) {
+            String mess = "Existed Email Address! Please choose another email address. ";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("signUp.jsp").forward(request, response);
+        } else {
+            dao.signUp(userEmail, pass, address, fullName, phoneNumber);
+            // String email, String password, String address, String fullName, String phoneNumber
+            String mess = "Sign up succesfully! Please Log in to continue.";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }
+    }
 //        }else if (!validation.isValidFullName(fullName)){
 //            String mess = "Invalid Full Name! Please re enter it. ";
 //            request.setAttribute("mess", mess);
@@ -67,19 +78,6 @@ public class signUpController extends HttpServlet {
 //            String mess = "Invalid Address! Please re enter it. ";
 //            request.setAttribute("mess", mess);
 //            request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else if (dao.getUserExistency(userID)){
-            String mess = "Existed Email Address! Please choose another email address. ";
-            request.setAttribute("mess", mess);
-            request.getRequestDispatcher("signUp.jsp").forward(request, response);
-        }else {
-            dao.signUp(userID, pass, address, fullName, phoneNumber, gender);
-            
-            String mess = "Sign up succesfully! Please Log in to continue.";
-            request.setAttribute("mess", mess);
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }
-    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
