@@ -52,6 +52,7 @@ public class loginController extends HttpServlet {
         }else {
             HttpSession session = request.getSession();
             session.setAttribute("user", u);
+            session.setMaxInactiveInterval(45*60); // session timed out
             request.getRequestDispatcher("home").forward(request, response);
             
         }

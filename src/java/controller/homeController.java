@@ -6,6 +6,7 @@
 package controller;
 
 
+import category.categoryDAO;
 import category.categoryDTO;
 import product.productDTO;
 import java.io.IOException;
@@ -38,10 +39,12 @@ public class homeController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //step 1: get data from dao
-        productDAO dao= new productDAO();
-        List<productDTO> list = dao.getAllProduct();
-        List<categoryDTO> listCate = dao.getAllCategory();
-        productDTO latestProduct = dao.getLastestProduct();
+        productDAO proDao= new productDAO();
+        categoryDAO cateDao = new categoryDAO();
+                
+        List<productDTO> list = proDao.getAllProduct();
+        List<categoryDTO> listCate = cateDao.getAllCategory();
+        productDTO latestProduct = proDao.getLastestProduct();
         // step 2: set data to jsp 
         request.setAttribute("listP", list);
         request.setAttribute("listCate", listCate);

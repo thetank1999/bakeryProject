@@ -17,14 +17,14 @@
                         <a class="nav-link" href="#">Manage Account</a>
                     </li>
                 </c:if>
-                <c:if test="${sessionScope.user.roleID == 2}">
+                <c:if test="${sessionScope.user.roleID == 3}">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Manage Product</a>
                     </li>
                 </c:if>
-                <c:if test="${sessionScope.user.roleID == 3}">
+                <c:if test="${sessionScope.user.roleID == 2}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage Marketing</a>
+                        <a class="nav-link" href="#">Manage Order</a>
                     </li>
                 </c:if>   
                 <c:if test="${sessionScope.user != null}">

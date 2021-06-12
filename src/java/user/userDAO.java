@@ -139,20 +139,20 @@ public class userDAO {
 //
 //    }
 
-    public static void main(String[] args) throws NoSuchAlgorithmException {
-        userDAO dao = new userDAO();
-        String password = "12345678";
-        String enPass = encryptPassword(password);
-        String email = "thanhTest2@fpt.edu.vn";
-        String address = "tpHCM";
-        String fullName = "thanh";
-        String phoneNumber = "0397318617";
-        dao.signUp(email, password, address, fullName, phoneNumber);
-        // dao.addRole(6, enPass);
-        Date date = dao.getCurrentDate();
-        System.out.println(date);
-        System.out.println(enPass);
-    }
+//    public static void main(String[] args) throws NoSuchAlgorithmException {
+//        userDAO dao = new userDAO();
+//        String password = "12345678";
+//        String enPass = encryptPassword(password);
+//        String email = "thanhTest2@fpt.edu.vn";
+//        String address = "tpHCM";
+//        String fullName = "thanh";
+//        String phoneNumber = "0397318617";
+//        dao.signUp(email, password, address, fullName, phoneNumber);
+//        // dao.addRole(6, enPass);
+//        Date date = dao.getCurrentDate();
+//        System.out.println(date);
+//        System.out.println(enPass);
+//    }
 
 //    public static void main(String[] args) {
 //        String a = "admin@fpt.edu.vn";

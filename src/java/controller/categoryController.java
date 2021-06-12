@@ -6,6 +6,7 @@
 package controller;
 
 
+import category.categoryDAO;
 import category.categoryDTO;
 import product.productDTO;
 import java.io.IOException;
@@ -39,10 +40,13 @@ public class categoryController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String cateID = request.getParameter("cateID");
-        productDAO dao = new productDAO();
-        List<productDTO> listById = dao.getAllProductByCateID(cateID);
-        List<categoryDTO> listCate = dao.getAllCategory();
-        productDTO latestProduct = dao.getLastestProduct();
+        productDAO proDao= new productDAO();
+        categoryDAO cateDao = new categoryDAO();
+        
+        
+        List<productDTO> listById = proDao.getAllProductByCateID(cateID);
+        List<categoryDTO> listCate = cateDao.getAllCategory();
+        productDTO latestProduct = proDao.getLastestProduct();
         
         request.setAttribute("listCate", listCate);
         request.setAttribute("latestProduct", latestProduct);
