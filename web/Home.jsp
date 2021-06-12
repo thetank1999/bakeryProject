@@ -33,8 +33,8 @@
                 <div class="row">
                 <jsp:include page="Left.jsp"></jsp:include>
 
-                <div class="col-sm-9">
-                    <div class="row">
+                    <div class="col-sm-9">
+                        <div class="row">
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
@@ -45,13 +45,13 @@
                                         </p>
                                         <div class="row">
                                             <div>
-                                                <p><del>${o.originalSalePrice}</del></p> 
-<!--                                                class="btn btn-danger btn-block"-->
-                                                
-                                                <p class="btn btn-danger btn-block">${o.salePrice}</p>
-                                            
+                                                <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p> 
+                                                    <!--                                                class="btn btn-danger btn-block"-->
+
+                                                    <p ><del>${o.salePrice}</del> VND</p>
+
                                             </div>
-                                            
+
                                             <div class="col">
                                                 <a href="#" class="btn btn-success btn-block">Add to cart</a>
                                             </div>

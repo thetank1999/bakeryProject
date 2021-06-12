@@ -45,13 +45,26 @@ public class productDAO {
                         rs.getBoolean(9), // status
                         rs.getBoolean(10),// saleStatus
                         rs.getInt(11) // stock
-                        ));
-                        
+                ));
+
             }
         } catch (Exception e) {
 
         }
         return list;
+    }
+
+    public void deleteProduct(int pID) {
+        String query = "delete from [product]\n"
+                + "where id = ?";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, pID);
+            //rs = ps.executeQuery();
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 
     public List<productDTO> getAllProductByCateID(String cateID) {
@@ -76,15 +89,13 @@ public class productDAO {
                         rs.getBoolean(9), // status
                         rs.getBoolean(10),// saleStatus
                         rs.getInt(11) // stock
-                        ));
+                ));
             }
         } catch (Exception e) {
 
         }
         return list;
     }
-
-    
 
     public productDTO getLastestProduct() {
         String query = "select top 1 * from Product\n"
@@ -106,7 +117,7 @@ public class productDAO {
                         rs.getBoolean(9), // status
                         rs.getBoolean(10),// saleStatus
                         rs.getInt(11) // stock
-                        );
+                );
             }
         } catch (Exception e) {
         }
@@ -134,7 +145,7 @@ public class productDAO {
                         rs.getBoolean(9), // status
                         rs.getBoolean(10),// saleStatus
                         rs.getInt(11) // stock
-                        );
+                );
             }
         } catch (Exception e) {
         }

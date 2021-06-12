@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+        <title>Manage Product</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -46,12 +46,15 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Image</th>
-                            <th>Price</th>
+                            <th>Sale Price</th>
+                            <th>Original Price</th>
+                            <th>No. in Stock</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach begin="1" end="5" var="o">
+                        <c:forEach items="${listP}" var="o">
+                            
                             <tr>
                                 <td>
                                     <span class="custom-checkbox">
@@ -59,15 +62,17 @@
                                         <label for="checkbox1"></label>
                                     </span>
                                 </td>
-                                <td>1</td>
-                                <td>Giày thể thao</td>
+                                <td>${o.id}</td>
+                                <td>${o.name}</td>
                                 <td>
-                                    <img src="https://image.yes24.vn/Upload/ProductImage/GmarketSport/2058803_L.jpg?width=550&height=550">
+                                    <img src="${o.thumbNailLink}" alt="Card image cap">
                                 </td>
-                                <td>100 $</td>
+                                <td>${o.originalSalePrice} VND</td>
+                                <td><del>${o.salePrice}</del> VND</td>
+                                <td>${o.stock}</td>
                                 <td>
                                     <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="delete?pID=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -104,16 +109,20 @@
                                 <input name="name" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Image</label>
-                                <input name="image" type="text" class="form-control" required>
+                                <label>Image/ Thumbnail Link</label>
+                                <input name="thumbnail" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Price</label>
-                                <input name="price" type="text" class="form-control" required>
+                                <label>Sale Price</label>
+                                <input name="originSalePrice" type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
-                                <textarea name="title" class="form-control" required></textarea>
+                                <label>Original Price</label>
+                                <input name="salePrice" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>No. in Stock</label>
+                                <input name="stock" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
@@ -121,9 +130,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Category</label>
-                                <select name="category" class="form-select" aria-label="Default select example">
-                                    <c:forEach begin="1" end="3" var="o">
-                                        <option value="1">Giày Adidas</option>
+                                <select name="cateID" class="form-select" aria-label="Default select example">
+                                    <c:forEach items="${listC}" var="o">
+                                        <option value="${o.id}">${o.name}</option>
                                     </c:forEach>
                                 </select>
                             </div>

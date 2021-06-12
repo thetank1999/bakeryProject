@@ -19,7 +19,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user.roleID == 3}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage Product</a>
+                        <a class="nav-link" href="manageProduct">Manage Product</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.user.roleID == 2}">
