@@ -67,8 +67,14 @@
                                 <td>
                                     <img src="${o.thumbNailLink}" alt="Card image cap">
                                 </td>
+                                <c:if test="${o.originalSalePrice < o.salePrice}">
                                 <td>${o.originalSalePrice} VND</td>
                                 <td><del>${o.salePrice}</del> VND</td>
+                                </c:if>
+                                <c:if test="${o.originalSalePrice >= o.salePrice}">
+                                <td></td>
+                                <td>${o.salePrice} VND</td>
+                                </c:if>
                                 <td>${o.stock}</td>
                                 <td>
                                     <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
@@ -78,7 +84,7 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                <div class="clearfix">
+<!--                <div class="clearfix">
                     <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                     <ul class="pagination">
                         <li class="page-item disabled"><a href="#">Previous</a></li>
@@ -89,9 +95,9 @@
                         <li class="page-item"><a href="#" class="page-link">5</a></li>
                         <li class="page-item"><a href="#" class="page-link">Next</a></li>
                     </ul>
-                </div>
+                </div>-->
             </div>
-            <a href="#"><button type="button" class="btn btn-primary">Back to home</button>
+            <a href="home"><button type="button" class="btn btn-primary">Back to home</button>
 
         </div>
         <!-- Edit Modal HTML -->

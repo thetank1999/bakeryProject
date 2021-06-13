@@ -44,14 +44,19 @@
                                         <p class="card-text show_txt">${o.details}
                                         </p>
                                         <div class="row">
-                                            <div>
-                                                <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p> 
-                                                    <!--                                                class="btn btn-danger btn-block"-->
-
+                                            <c:if test="${o.originalSalePrice < o.salePrice}">
+                                                <div>
+                                                    <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p> 
                                                     <p ><del>${o.salePrice}</del> VND</p>
+                                                </div>
+                                            </c:if>
 
-                                            </div>
-
+                                            <c:if test="${o.originalSalePrice >= o.salePrice}">
+                                                <div>
+                                                    <p class="btn btn-danger btn-block">${o.salePrice} VND</p>
+                                                    <p > </p> 
+                                                </div>
+                                            </c:if>
                                             <div class="col">
                                                 <a href="#" class="btn btn-success btn-block">Add to cart</a>
                                             </div>

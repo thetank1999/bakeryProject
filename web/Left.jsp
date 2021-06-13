@@ -16,9 +16,14 @@
                                     <img class="img-fluid" src="${latestProduct.thumbNailLink}" alt="Card image cap" />
                                     <h5 class="card-title">${latestProduct.name}</h5>
                                     <p class="card-text">${latestProduct.details}</p>
-                                    <p class="bloc_left_price">${latestProduct.originalSalePrice} VND</p> 
+                                    <c:if test="${latestProduct.originalSalePrice < latestProduct.salePrice}">
+                                        <p class="bloc_left_price"><a href="detail?pID=${latestProduct.id}" class="bloc_left_price">${latestProduct.originalSalePrice} VND </a></p> 
                                     <p class="bloc_left_price"><del>${latestProduct.salePrice}</del> VND</p>
-                                    
+                                    </c:if>
+                                    <c:if test="${latestProduct.originalSalePrice >= latestProduct.salePrice}">
+                                    <p class="bloc_left_price"></p> 
+                                    <p class="bloc_left_price">${latestProduct.salePrice} VND</p>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
