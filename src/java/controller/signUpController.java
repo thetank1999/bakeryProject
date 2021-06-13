@@ -36,6 +36,7 @@ public class signUpController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String fullName = request.getParameter("fullName");
         String userEmail = request.getParameter("user");
         String pass = request.getParameter("pass");

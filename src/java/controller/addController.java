@@ -12,6 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import product.productDAO;
+import user.userDTO;
 
 /**
  *
@@ -32,7 +35,29 @@ public class addController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        userDTO u = (userDTO) session.getAttribute("user");
         
+        String name = request.getParameter("name");
+        String thumbnailLink = request.getParameter("thumbnail");
+        String originSalePrice_String = request.getParameter("originSalePrice");
+        int originalSalePrice = Integer.parseInt(originSalePrice_String);
+        String salePrice_String = request.getParameter("salePrice");
+        int salePrice = Integer.parseInt(salePrice_String);
+        String stock_String = request.getParameter("stock");
+        int stock = Integer.parseInt(stock_String);
+        String detail = request.getParameter("description");
+        String cateID = request.getParameter("cateID");
+        String emailUploader = u.getEmail();
+        String statusString = request.getParameter("status");
+        boolean status = Boolean.parseBoolean(statusString);
+        String saleStatusString = request.getParameter("saleStatus");
+        boolean saleStatus = Boolean.parseBoolean(saleStatusString);
+        
+        productDAO proDAO = new productDAO();
+        proDAO.addProduct(name, cateID, thumbnailLink, emailUploader, originalSalePrice, salePrice, detail, status, saleStatus, stock);
+        response.sendRedirect("manageProduct");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

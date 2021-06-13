@@ -39,6 +39,7 @@ public class loginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NoSuchAlgorithmException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String userName= request.getParameter("user");
         String passWord= request.getParameter("pass");
         userDAO dao= new userDAO();

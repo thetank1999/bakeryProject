@@ -151,4 +151,26 @@ public class productDAO {
         }
         return null;
     }
+
+    public void addProduct(String name, String cateID, String thumnailLink, String uploaderEmail,int originalSalePrice, int salePrice, String detail, boolean status, boolean saleStatus, int stock ) {
+        String query = "INSERT [dbo].[Product]\n"
+                + "( [Name], [CategoryId], [ThumbnailLink], [UploaderEmail], [OringinalSalePrice], [SalePrice], [Details], [Status], [SaleStatus], [Stock]) \n"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, cateID);
+            ps.setString(3, thumnailLink);
+            ps.setString(4, uploaderEmail);
+            ps.setInt(5, originalSalePrice);
+            ps.setInt(6, salePrice);
+            ps.setString(7, detail);
+            ps.setBoolean(8, status);
+            ps.setBoolean(9, saleStatus);
+            ps.setInt(10, stock);
+            ps.executeQuery();
+        } catch (Exception e) {
+        }
+    }
 }
