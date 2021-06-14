@@ -36,7 +36,7 @@
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h2>Manage <b>Product</b></h2>
+                                <h2 >Manage <b>Product</b></h2>
                             </div>
                             <div class="col-sm-6">
                                 <a href="manageProduct"><button type="button" class="btn btn-success">Back</button></a>
@@ -46,11 +46,11 @@
                         </div>
                     </div>
                     <div id="addProduct" class="">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog" >
                             <div class="modal-content">
-                                <form action="addProduct" method="post">
+                                <form action="add" method="post">
                                     <div class="modal-header">						
-                                        <h3 class="modal-title">Add Product</h3>
+                                        <h3 class="modal-title">Add <b>Product</b></h3>
 
                                     </div>
                                     <div class="modal-body">	

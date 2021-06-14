@@ -30,17 +30,17 @@
     <body>
 
         <jsp:include page="Menu.jsp"></jsp:include>
-        <c:if test="${sessionScope.user.roleID == 3}">
+        <c:if test="${sessionScope.user.roleID == 1}">
             <div class="container">
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row">
                             <div class="col-sm-6">
-                                <h2>Manage <b>Product</b></h2>
+                                <h2>Manage <b>Account</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                <a href="getCategoryData"  class="btn btn-success"><span>Add New Product</span></a>
-                                <!--                                <i class="material-icons">&#xE147;</i>-->
+                                
+                                
 
 
                             </div>
@@ -89,9 +89,9 @@
                                     </c:if>
                                     <td>${o.stock}</td>
                                     <td>
-                                        <a href="getProductData?pID=${o.id}"  class="edit" data-toggle="modal">Edit</a> 
+                                        <a href="#"  class="edit" data-toggle="modal">Edit</a> 
                                         <!--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>-->
-                                        <a href="delete?pID=${o.id}" class="delete" data-toggle="modal">Delete</a>
+                                        <a href="#" class="delete" data-toggle="modal">Delete</a>
                                         <!--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>-->
                                     </td>
                                 </tr>

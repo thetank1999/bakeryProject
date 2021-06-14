@@ -23,8 +23,8 @@ import user.userDTO;
  *
  * @author theta
  */
-@WebServlet(name = "addController", urlPatterns = {"/add"})
-public class addController extends HttpServlet {
+@WebServlet(name = "editController", urlPatterns = {"/edit"})
+public class editController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,16 +38,19 @@ public class addController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         userDTO u = (userDTO) session.getAttribute("user");
-        
+
         categoryDAO cateDao = new categoryDAO();
 
         List<categoryDTO> listC = cateDao.getAllCategory();
 
         request.setAttribute("listC", listC);
 
+        String idString = request.getParameter("id");
+        int id = Integer.parseInt(idString);
         String name = request.getParameter("name");
         String thumbnailLink = request.getParameter("thumbnail");
         String originSalePrice_String = request.getParameter("originSalePrice");
@@ -65,7 +68,7 @@ public class addController extends HttpServlet {
         boolean saleStatus = Boolean.parseBoolean(saleStatusString);
 
         productDAO proDAO = new productDAO();
-        proDAO.addProduct(name, cateID, thumbnailLink, emailUploader, originalSalePrice, salePrice, detail, status, saleStatus, stock);
+        proDAO.editProduct(name, cateID, thumbnailLink, emailUploader, originalSalePrice, salePrice, detail, status, saleStatus, stock, id);
         request.getRequestDispatcher("manageProduct").forward(request, response);
     }
 

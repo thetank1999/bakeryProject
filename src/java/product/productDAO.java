@@ -152,9 +152,18 @@ public class productDAO {
         return null;
     }
 
-    public void addProduct(String name, String cateID, String thumnailLink, String uploaderEmail,int originalSalePrice, int salePrice, String detail, boolean status, boolean saleStatus, int stock ) {
+    public void addProduct(String name, String cateID, String thumnailLink, String uploaderEmail, int originalSalePrice, int salePrice, String detail, boolean status, boolean saleStatus, int stock) {
         String query = "INSERT [dbo].[Product]\n"
-                + "( [Name], [CategoryId], [ThumbnailLink], [UploaderEmail], [OringinalSalePrice], [SalePrice], [Details], [Status], [SaleStatus], [Stock]) \n"
+                + "( [Name], "
+                + "[CategoryId], "
+                + "[ThumbnailLink], "
+                + "[UploaderEmail], "
+                + "[OringinalSalePrice], "
+                + "[SalePrice], "
+                + "[Details], "
+                + "[Status], "
+                + "[SaleStatus], "
+                + "[Stock]) \n"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             conn = new dBContext().getConnection();
@@ -173,4 +182,47 @@ public class productDAO {
         } catch (Exception e) {
         }
     }
+
+    public void editProduct(String name, String cateID, String thumnailLink, String uploaderEmail, int originalSalePrice, int salePrice, String detail, boolean status, boolean saleStatus, int stock, int id) {
+        String query = "update [Product]\n"
+                + "set [Name] = ?,\n"
+                + "[CategoryId] = ?,\n"
+                + "[ThumbnailLink] = ?,\n"
+                + "[UploaderEmail] = ?,\n"
+                + "[OringinalSalePrice] = ?,\n"
+                + "[SalePrice]= ?,\n"
+                + "[Details]= ?,\n"
+                + "[Status] = ?,\n"
+                + "[SaleStatus] = ?,\n"
+                + "[Stock] = ? \n"
+                + "where [Id] = ?";
+
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, cateID);
+            ps.setString(3, thumnailLink);
+            ps.setString(4, uploaderEmail);
+            ps.setInt(5, originalSalePrice);
+            ps.setInt(6, salePrice);
+            ps.setString(7, detail);
+            ps.setBoolean(8, status);
+            ps.setBoolean(9, saleStatus);
+            ps.setInt(10, stock);
+            ps.setInt(11, id);
+            ps.executeQuery();
+        } catch (Exception e) {
+        }
+    }
+//    public static void main(String[] args) {
+//        productDAO dao = new productDAO();
+//        String name = "lá ngón loại 1";
+//        String cateID = "C1";
+//        String thumnailLink = "https://www.thuocdantoc.org/wp-content/uploads/2019/10/la-ngon.jpg";
+//        String uploaderEmail = "thanhTest3@gmail.com";
+//        String detail = "ngon lam do";
+//        //dao.editProduct(name, cateID, thumnailLink, uploaderEmail, 0, 0, detail, true, true, 0, 23);
+//        dao.addProduct(name, cateID, thumnailLink, uploaderEmail, 0, 0, detail, true, true, 0);
+//    }
 }

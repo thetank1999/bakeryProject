@@ -53,7 +53,11 @@
                                         <h4 class="modal-title">Edit Product</h4>
 
                                     </div>
-                                    <div class="modal-body">					
+                                    <div class="modal-body">	
+                                        <div class="form-group">
+                                            <label>ID</label>
+                                            <input value="${p.id}" name="id" type="number" class="form-control" readonly>
+                                        </div>
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input value="${p.name}" name="name" type="text" class="form-control" required>

@@ -15,16 +15,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import product.productDAO;
-import user.userDTO;
+import product.productDTO;
 
 /**
  *
  * @author theta
  */
-@WebServlet(name = "addController", urlPatterns = {"/add"})
-public class addController extends HttpServlet {
+@WebServlet(name = "getCategoryDataController", urlPatterns = {"/getCategoryData"})
+public class getCategoryDataController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,34 +38,15 @@ public class addController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        userDTO u = (userDTO) session.getAttribute("user");
-        
+        String cateID = request.getParameter("cateID");
+
         categoryDAO cateDao = new categoryDAO();
 
-        List<categoryDTO> listC = cateDao.getAllCategory();
+        List<categoryDTO> listCate = cateDao.getAllCategory();
 
-        request.setAttribute("listC", listC);
+        request.setAttribute("listCate", listCate);
 
-        String name = request.getParameter("name");
-        String thumbnailLink = request.getParameter("thumbnail");
-        String originSalePrice_String = request.getParameter("originSalePrice");
-        int originalSalePrice = Integer.parseInt(originSalePrice_String);
-        String salePrice_String = request.getParameter("salePrice");
-        int salePrice = Integer.parseInt(salePrice_String);
-        String stock_String = request.getParameter("stock");
-        int stock = Integer.parseInt(stock_String);
-        String detail = request.getParameter("description");
-        String cateID = request.getParameter("cateID");
-        String emailUploader = u.getEmail();
-        String statusString = request.getParameter("status");
-        boolean status = Boolean.parseBoolean(statusString);
-        String saleStatusString = request.getParameter("saleStatus");
-        boolean saleStatus = Boolean.parseBoolean(saleStatusString);
-
-        productDAO proDAO = new productDAO();
-        proDAO.addProduct(name, cateID, thumbnailLink, emailUploader, originalSalePrice, salePrice, detail, status, saleStatus, stock);
-        request.getRequestDispatcher("manageProduct").forward(request, response);
+        request.getRequestDispatcher("addProduct.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
