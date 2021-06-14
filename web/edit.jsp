@@ -57,7 +57,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Sale Price</label>
-                                            <input value="${p.originalSalePrice}" name="originSalePrice" type="text" class="form-control" required>
+                                            <input value="${p.originalSalePrice}" name="originSalePrice" type="text" class="form-control" >
                                         </div>
                                         <div class="form-group">
                                             <label>Original Price</label>
