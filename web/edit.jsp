@@ -88,8 +88,12 @@
                                         </div>
                                         <div class="form-group">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                                             <label>Status </label>
+=======
+                                            <label>Status</label>
+>>>>>>> parent of c135b88 (.)
 =======
                                             <label>Status</label>
 >>>>>>> parent of c135b88 (.)
