@@ -41,12 +41,16 @@
                     <div id="editProduct" class="">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="add" method="post">
+                                <form action="edit" method="post">
                                     <div class="modal-header">						
                                         <h4 class="modal-title">Edit Product</h4>
 
                                     </div>
-                                    <div class="modal-body">					
+                                    <div class="modal-body">	
+                                        <div class="form-group">
+                                            <label>Product ID</label>
+                                            <input value="${p.id}" name="name" type="text" class="form-control" required readonly>
+                                        </div>
                                         <div class="form-group">
                                             <label>Name</label>
                                             <input value="${p.name}" name="name" type="text" class="form-control" required>
@@ -75,25 +79,26 @@
                                             <label>Category</label>
                                             <select name="cateID" class="form-select" aria-label="Default select example">
                                                 <c:forEach items="${listCate}" var="o">
-                                                    <option value="${o.id}">${o.name}</option>
+                                                    <option  ${p.categoryID ==o.id ? "selected":""} value="${o.id}">${o.name}</option>
                                                 </c:forEach>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Status</label>
+                                            
+                                            <label>Status </label>
                                             <select name="status" class="form-select" aria-label="Default select example">
-                                                <option value="true">True</option>
-                                                <option value="fase">False</option>
-                                                <option value="null">NULL</option>
+                                                <option ${p.status == true ? "selected": ""} value="true">True</option>
+                                                <option ${p.status == false ? "selected": ""} value="fase">False</option>
+                                                <option ${p.status == null ? "selected": ""} value="null">NULL</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Sale Status</label>
+                                            <label>Sale Status </label>
                                             <select name="saleStatus" class="form-select" aria-label="Default select example">
-                                                <option value="true">True</option>
-                                                <option value="fase">False</option>
-                                                <option value="null">NULL</option>
+                                                <option ${p.saleStatus == true ? "selected": ""} value="true">True</option>
+                                                <option ${p.saleStatus == false ? "selected": ""} value="fase">False</option>
+                                                <option ${p.saleStatus == null ? "selected": ""} value="null">NULL</option>
                                             </select>
                                         </div>
 
