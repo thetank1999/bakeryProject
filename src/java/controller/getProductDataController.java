@@ -5,10 +5,8 @@
  */
 package controller;
 
-
 import category.categoryDAO;
 import category.categoryDTO;
-import product.productDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,13 +16,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import product.productDAO;
+import product.productDTO;
 
 /**
  *
  * @author theta
  */
-@WebServlet(name = "detailController", urlPatterns = {"/detail"})
-public class detailController extends HttpServlet {
+@WebServlet(name = "getProductDataController", urlPatterns = {"/getProductData"})
+public class getProductDataController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,8 +54,7 @@ public class detailController extends HttpServlet {
         request.setAttribute("latestProduct", latestProduct);
         request.setAttribute("act", cateID);
         request.setAttribute("p", p);
-        request.getRequestDispatcher("Detail.jsp").forward(request, response);
-        //request.getRequestDispatcher("manageProduct").forward(request, response);
+        request.getRequestDispatcher("edit.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

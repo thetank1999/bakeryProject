@@ -21,6 +21,7 @@
             }
         </style>
     <body>
+        <c:if test="${sessionScope.user.roleID == 3}">
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -78,7 +79,7 @@
                                 </c:if>
                                 <td>${o.stock}</td>
                                 <td>
-                                    <a href="#editProduct"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="getProductData?pID=${o.id}"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="delete?pID=${o.id}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -104,7 +105,7 @@
 
         </div>
 <!--        -->
-        <!-- Edit Modal HTML -->
+        <!-- add Modal HTML -->
         <div id="addProduct" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -175,12 +176,12 @@
             </div>
         </div>
         <!-- Edit Modal HTML -->
-        <div id="editProduct" class="modal fade">
+<!--        <div id="editProduct" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">						
-                            <h4 class="modal-title">Edit Employee</h4>
+                            <h4 class="modal-title">Edit Product</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">					
@@ -189,8 +190,8 @@
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control" required>
+                                <label>Thumbnail </label>
+                                <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
@@ -208,7 +209,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Delete Modal HTML -->
         <div id="deleteEmployeeModal" class="modal fade">
             <div class="modal-dialog">
@@ -232,5 +233,6 @@
         </div>
     </a>
     <script src="js/manager.js" type="text/javascript"></script>
+    </c:if>
 </body>
 </html>
