@@ -56,11 +56,11 @@
                                             <input value="${p.thumbNailLink}" name="thumbnail" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label>Sale Price</label>
+                                            <label>Sale Price (VND)</label>
                                             <input value="${p.originalSalePrice}" name="originSalePrice" type="number" class="form-control" >
                                         </div>
                                         <div class="form-group">
-                                            <label>Original Price</label>
+                                            <label>Original Price (VND)</label>
                                             <input value="${p.salePrice}" name="salePrice" type="number" class="form-control" required>
                                         </div>
                                         <div class="form-group">
