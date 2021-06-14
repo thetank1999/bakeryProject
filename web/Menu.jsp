@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--begin of menu-->
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="home">Home Page</a>
@@ -66,10 +67,5 @@
         </div>
     </div>
 </nav>
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">SWP Bakery </h1>
-        <p class="lead text-muted mb-0">High quality products only</p>
-    </div>
-</section>
+
 <!--end of menu-->

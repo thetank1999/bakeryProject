@@ -13,9 +13,15 @@
         <!------ Include the above in your HEAD tag ---------->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
+
+
         <jsp:include page="Menu.jsp"></jsp:include>
+        <jsp:include page="slider.html"></jsp:include>
+            
+
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -68,19 +74,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <!--                                <li class="breadcrumb-item"><a href="home">Home</a></li>
-                                                            <li class="breadcrumb-item"><a href="#">Category</a></li>
-                                                            <li class="breadcrumb-item active" aria-current="#">Sub-category</li>-->
-                        </ol>
-                    </nav>
-                </div>
             </div>
         </div>
         <jsp:include page="Footer.jsp"></jsp:include>

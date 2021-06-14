@@ -48,45 +48,42 @@
                     <div id="editProduct" class="">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="edit" method="post">
+                                <form action="add" method="post">
                                     <div class="modal-header">						
-                                        <h4 class="modal-title">Edit Product</h4>
+                                        <h3 class="modal-title">Add Product</h3>
 
                                     </div>
                                     <div class="modal-body">	
-                                        <div class="form-group">
-                                            <label>Product ID</label>
-                                            <input value="${p.id}" name="name" type="text" class="form-control" required readonly>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input value="${p.name}" name="name" type="text" class="form-control" required>
+                                            <input  name="name" type="text" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Image/ Thumbnail Link</label>
-                                            <input value="${p.thumbNailLink}" name="thumbnail" type="text" class="form-control">
+                                            <input  name="thumbnail" type="text" class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label>Sale Price (VND)</label>
-                                            <input value="${p.originalSalePrice}" name="originSalePrice" type="number" class="form-control" >
+                                            <input  name="originSalePrice" type="number" class="form-control" >
                                         </div>
                                         <div class="form-group">
                                             <label>Original Price (VND)</label>
-                                            <input value="${p.salePrice}" name="salePrice" type="number" class="form-control" required>
+                                            <input  name="salePrice" type="number" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>No. in Stock</label>
-                                            <input value="${p.stock}" name="stock" class="form-control" type="number" required>
+                                            <input  name="stock" class="form-control" type="number" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea name="description" class="form-control" required>${p.details}</textarea>
+                                            <textarea name="description" class="form-control" required></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Category</label>
                                             <select name="cateID" class="form-select" aria-label="Default select example">
                                                 <c:forEach items="${listCate}" var="o">
-                                                    <option  ${p.categoryID ==o.id ? "selected":""} value="${o.id}">${o.name}</option>
+                                                    <option  value="${o.id}">${o.name}</option>
                                                 </c:forEach>
                                             </select>
                                         </div>
@@ -94,18 +91,18 @@
 
                                             <label>Status </label>
                                             <select name="status" class="form-select" aria-label="Default select example">
-                                                <option ${p.status == true ? "selected": ""} value="true">True</option>
-                                                <option ${p.status == false ? "selected": ""} value="fase">False</option>
-                                                <option ${p.status == null ? "selected": ""} value="null">NULL</option>
+                                                <option  value="true" selected >True</option>
+                                                <option  value="fase">False</option>
+                                                <option  value="null">NULL</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Sale Status </label>
                                             <select name="saleStatus" class="form-select" aria-label="Default select example">
-                                                <option ${p.saleStatus == true ? "selected": ""} value="true">True</option>
-                                                <option ${p.saleStatus == false ? "selected": ""} value="fase">False</option>
-                                                <option ${p.saleStatus == null ? "selected": ""} value="null">NULL</option>
+                                                <option  value="true" selected >True</option>
+                                                <option  value="fase">False</option>
+                                                <option  value="null">NULL</option>
                                             </select>
                                         </div>
 
@@ -113,7 +110,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <a href="manageProduct"><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></a>
-                                        <input type="submit" class="btn btn-info" value="Save">
+                                        <input type="submit" class="btn btn-info" value="Add">
                                     </div>
                                 </form>
                             </div>

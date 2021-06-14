@@ -42,13 +42,14 @@ public class addController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         userDTO u = (userDTO) session.getAttribute("user");
-        
+        productDAO proDao= new productDAO();
         categoryDAO cateDao = new categoryDAO();
-
+                       
         List<categoryDTO> listC = cateDao.getAllCategory();
-
+        List<productDTO> listP = proDao.getAllProduct();
         request.setAttribute("listC", listC);
-
+//        request.setAttribute("listP", listP);
+        
         String name = request.getParameter("name");
         String thumbnailLink = request.getParameter("thumbnail");
         String originSalePrice_String = request.getParameter("originSalePrice");
@@ -64,7 +65,7 @@ public class addController extends HttpServlet {
         boolean status = Boolean.parseBoolean(statusString);
         String saleStatusString = request.getParameter("saleStatus");
         boolean saleStatus = Boolean.parseBoolean(saleStatusString);
-
+        
         productDAO proDAO = new productDAO();
         proDAO.addProduct(name, cateID, thumbnailLink, emailUploader, originalSalePrice, salePrice, detail, status, saleStatus, stock);
         request.getRequestDispatcher("addProduct.jsp").forward(request, response);
