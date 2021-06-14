@@ -57,15 +57,15 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Sale Price</label>
-                                            <input value="${p.originalSalePrice}" name="originSalePrice" type="text" class="form-control" >
+                                            <input value="${p.originalSalePrice}" name="originSalePrice" type="number" class="form-control" >
                                         </div>
                                         <div class="form-group">
                                             <label>Original Price</label>
-                                            <input value="${p.salePrice}" name="salePrice" type="text" class="form-control" required>
+                                            <input value="${p.salePrice}" name="salePrice" type="number" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>No. in Stock</label>
-                                            <input value="${p.stock}" name="stock" class="form-control" required>
+                                            <input value="${p.stock}" name="stock" class="form-control" type="number" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>
