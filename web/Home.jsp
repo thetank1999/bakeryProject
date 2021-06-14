@@ -27,9 +27,9 @@
                     <div class="col">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <!--                                <li class="breadcrumb-item"><a href="home">Home</a></li>
-                                                                <li class="breadcrumb-item"><a href="#">Category</a></li>
-                                                                <li class="breadcrumb-item active" aria-current="#">Sub-category</li>-->
+                                <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Category</a></li>
+                                <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
                             </ol>
                         </nav>
                     </div>
@@ -76,6 +76,10 @@
 
             </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c135b88 (.)
         <jsp:include page="Footer.jsp"></jsp:include>
     </body>
 </html>
