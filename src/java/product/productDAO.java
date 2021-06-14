@@ -215,6 +215,75 @@ public class productDAO {
         } catch (Exception e) {
         }
     }
+
+    public int getMaxPagesBy6() {
+        String query = "select count(*) from [Product]";
+        
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int total = rs.getInt(1);
+                int countPage = 0;
+                countPage = total / 6;
+                if (total % 6 != 0) {
+                    countPage++;
+                }
+                return countPage;
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public int getProductQuatity() {
+        String query = "select count(*) from [Product]";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int total = 0;
+                total = rs.getInt(1);
+                return total;
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public List<productDTO> getProductBy6(int index) {
+        List<productDTO> list = new ArrayList<>();
+        String query = "select * from [Product]\n"
+                + "order by [Id]\n"
+                + "offset ? rows\n"
+                + "fetch first 6 rows only";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, index);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new productDTO(
+                        rs.getInt(1), //id
+                        rs.getString(2), // name
+                        rs.getString(3), // cateID
+                        rs.getString(4), //thumbnail
+                        rs.getString(5), //uploader
+                        rs.getInt(6), // lowerPrice
+                        rs.getInt(7), // higherPrice
+                        rs.getString(8), // detail
+                        rs.getBoolean(9), // status
+                        rs.getBoolean(10),// saleStatus
+                        rs.getInt(11) // stock
+                ));
+            }
+
+        } catch (Exception e) {
+        }
+        return list;
+    }
 //    public static void main(String[] args) {
 //        productDAO dao = new productDAO();
 //        String name = "lá ngón loại 1";
@@ -225,4 +294,10 @@ public class productDAO {
 //        //dao.editProduct(name, cateID, thumnailLink, uploaderEmail, 0, 0, detail, true, true, 0, 23);
 //        dao.addProduct(name, cateID, thumnailLink, uploaderEmail, 0, 0, detail, true, true, 0);
 //    }
+
+    public static void main(String[] args) {
+        productDAO dao = new productDAO();
+        System.out.println(dao.getMaxPagesBy6());
+        System.out.println(dao.getProductQuatity());
+    }
 }

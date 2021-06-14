@@ -13,27 +13,17 @@
         <!------ Include the above in your HEAD tag ---------->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
-        
+
     </head>
     <body>
 
 
         <jsp:include page="Menu.jsp"></jsp:include>
         <jsp:include page="slider.html"></jsp:include>
-            
+
 
             <div class="container">
-<!--                <div class="row">
-                    <div class="col">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="Home.jsp">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Category</a></li>
-                                <li class="breadcrumb-item active" aria-current="#">Sub-category</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>-->
+
             </div>
             <div class="container">
                 <div class="row">
@@ -51,14 +41,14 @@
                                         </p>
                                         <div class="row">
                                             <c:if test="${o.originalSalePrice < o.salePrice}">
-                                                <div>
+                                                <div class="col">
                                                     <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p> 
-                                                    <p ><del>${o.salePrice}</del> VND</p>
+                                                    <p class="btn  btn-block"><del>${o.salePrice}</del> VND</p>
                                                 </div>
                                             </c:if>
 
                                             <c:if test="${o.originalSalePrice >= o.salePrice}">
-                                                <div>
+                                                <div class="col">
                                                     <p class="btn btn-danger btn-block">${o.salePrice} VND</p>
                                                     <p > </p> 
                                                 </div>
@@ -71,9 +61,19 @@
                                 </div>
                             </div>
                         </c:forEach>
-                    </div>
-                </div>
 
+                    </div>
+                        <div class="clearfix">
+                    <div class="hint-text">Showing <b>6</b> out of <b>${productQuantity}</b> entries</div>
+                    <ul class="pagination">
+                        <c:forEach begin="1" end="${maxPages}" var="i">
+                            <li class="page-item"><a class="page-link" href="paging?index=${i}">${i}</a></li>
+                            </c:forEach>
+
+                    </ul>
+                </div>
+                </div>
+                
             </div>
         </div>
         <jsp:include page="Footer.jsp"></jsp:include>

@@ -15,16 +15,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import product.productDAO;
-import user.userDTO;
+import product.productDTO;
 
 /**
  *
  * @author theta
  */
-@WebServlet(name = "editController", urlPatterns = {"/edit"})
-public class editController extends HttpServlet {
+@WebServlet(name = "pagingController", urlPatterns = {"/paging"})
+public class pagingHomePageController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,38 +37,26 @@ public class editController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        userDTO u = (userDTO) session.getAttribute("user");
-
+        //step 1: get data from dao
+        productDAO proDao= new productDAO();
         categoryDAO cateDao = new categoryDAO();
-
-        List<categoryDTO> listC = cateDao.getAllCategory();
-
-        request.setAttribute("listC", listC);
-
-        String idString = request.getParameter("id");
-        int id = Integer.parseInt(idString);
-        String name = request.getParameter("name");
-        String thumbnailLink = request.getParameter("thumbnail");
-        String originSalePrice_String = request.getParameter("originSalePrice");
-        int originalSalePrice = Integer.parseInt(originSalePrice_String);
-        String salePrice_String = request.getParameter("salePrice");
-        int salePrice = Integer.parseInt(salePrice_String);
-        String stock_String = request.getParameter("stock");
-        int stock = Integer.parseInt(stock_String);
-        String detail = request.getParameter("description");
-        String cateID = request.getParameter("cateID");
-        String emailUploader = u.getEmail();
-        String statusString = request.getParameter("status");
-        boolean status = Boolean.parseBoolean(statusString);
-        String saleStatusString = request.getParameter("saleStatus");
-        boolean saleStatus = Boolean.parseBoolean(saleStatusString);
-
-        productDAO proDAO = new productDAO();
-        proDAO.editProduct(name, cateID, thumbnailLink, emailUploader, originalSalePrice, salePrice, detail, status, saleStatus, stock, id);
-        request.getRequestDispatcher("manageProduct").forward(request, response);
+        String indexString = request.getParameter("index");
+        int index = Integer.parseInt(indexString);
+        
+        List<productDTO> list = proDao.getProductBy6(index);
+        List<categoryDTO> listCate = cateDao.getAllCategory();
+        productDTO latestProduct = proDao.getLastestProduct();
+        int productQuantity = proDao.getProductQuatity();
+        int maxPages = proDao.getMaxPagesBy6();
+        // step 2: set data to jsp 
+        request.setAttribute("listP", list);
+        request.setAttribute("listCate", listCate);
+        request.setAttribute("latestProduct", latestProduct);
+        request.setAttribute("productQuantity", productQuantity);
+        request.setAttribute("maxPages", maxPages);
+        //request.setAttribute("tag", 0);
+        request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
