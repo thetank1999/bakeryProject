@@ -39,7 +39,7 @@
                                 <h2>Manage <b>Product</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                <a href="add"  class="btn btn-success" data-toggle="modal"><span>Add New Product</span></a>
+                                <a href="add"  class="btn btn-success"><span>Add New Product</span></a>
                                 <!--                                <i class="material-icons">&#xE147;</i>-->
 
 

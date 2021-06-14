@@ -76,14 +76,6 @@
 
             </div>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of c135b88 (.)
-=======
-
->>>>>>> parent of c135b88 (.)
         <jsp:include page="Footer.jsp"></jsp:include>
     </body>
 </html>

@@ -48,7 +48,7 @@
                     <div id="editProduct" class="">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="add" method="post">
+                                <form action="edit" method="post">
                                     <div class="modal-header">						
                                         <h4 class="modal-title">Edit Product</h4>
 
@@ -87,16 +87,7 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                                            <label>Status </label>
-=======
                                             <label>Status</label>
->>>>>>> parent of c135b88 (.)
-=======
-                                            <label>Status</label>
->>>>>>> parent of c135b88 (.)
                                             <select name="status" class="form-select" aria-label="Default select example">
                                                 <option value="true">True</option>
                                                 <option value="fase">False</option>

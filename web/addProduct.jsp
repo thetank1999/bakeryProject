@@ -45,10 +45,10 @@
                             </div>
                         </div>
                     </div>
-                    <div id="editProduct" class="">
+                    <div id="addProduct" class="">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="add" method="post">
+                                <form action="addProduct" method="post">
                                     <div class="modal-header">						
                                         <h3 class="modal-title">Add Product</h3>
 
