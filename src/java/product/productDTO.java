@@ -47,7 +47,7 @@ public class productDTO {
 
     @Override
     public String toString() {
-        return "productDTO{" + "id=" + id + ", name=" + name + ", categoryID=" + categoryID + ", thumbNailLink=" + thumbNailLink + ", uploaderEmail=" + uploaderEmail + ", originalSalePrice=" + originalSalePrice + ", salePrice=" + salePrice + ", details=" + details + ", status=" + status + ", saleStatus=" + saleStatus + ", stock=" + stock + '}';
+        return "productDTO{" + "id=" + id + ", name=" + name + ", categoryID=" + categoryID + ", thumbNailLink=" + thumbNailLink + ", uploaderEmail=" + uploaderEmail + ", originalSalePrice=" + originalSalePrice + ", salePrice=" + salePrice + ", details=" + details + ", status=" + status + ", saleStatus=" + saleStatus + ", stock=" + stock  + '}' + "\n";
     }
 
     public void setId(int id) {

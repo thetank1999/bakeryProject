@@ -76,13 +76,14 @@
 
                     </div>
                     
+                    
+                    
                         <ul class="pagination">
                             <c:forEach begin="1" end="${maxPages}" var="i">
-                                <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="paging?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
+                                <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="pagingProduct?cateID=${cateID}&index=${i}">${i}</a></li>
                                 </c:forEach>
 
                         </ul>
-                    
                     
                 </div>
 

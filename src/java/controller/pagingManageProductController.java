@@ -24,8 +24,8 @@ import user.userDTO;
  *
  * @author theta
  */
-@WebServlet(name = "manageProductController", urlPatterns = {"/manageProduct"})
-public class manageProductController extends HttpServlet {
+@WebServlet(name = "pagingManageProductController", urlPatterns = {"/pagingManageProduct"})
+public class pagingManageProductController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,7 +59,6 @@ public class manageProductController extends HttpServlet {
         request.setAttribute("index", index);
         session.setAttribute("user", u);
         request.getRequestDispatcher("manageProduct.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

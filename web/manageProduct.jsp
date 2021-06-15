@@ -99,24 +99,30 @@
                         </tbody>
 
                     </table>
-                    <!--                <div class="clearfix">
-                                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                                        </ul>
-                                    </div>-->
-                    <a href="home"><button type="button" class="btn btn-success">Back to home</button></a>
-                </div>
+                    <div class="clearfix">
+                        <ul class="pagination">
+                            <c:forEach begin="1" end="${maxPages}" var="i">
+                                <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="pagingManageProduct?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
+                                </c:forEach>
 
+                        </ul>
+
+                    </div>
+
+                </div>
+                <a href="home"><button type="button" class="btn btn-success">Back to home</button></a>
 
             </div>
-
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
 
             <script src="js/manager.js" type="text/javascript"></script>
         </c:if>

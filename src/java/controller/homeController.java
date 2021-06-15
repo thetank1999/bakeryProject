@@ -54,6 +54,7 @@ public class homeController extends HttpServlet {
         int productQuantity = proDao.getProductQuatity();
         int maxPages = proDao.getMaxPagesBy6();
         // step 2: set data to jsp 
+        request.setAttribute("index", index);
         request.setAttribute("listP", list);
         request.setAttribute("listCate", listCate);
         request.setAttribute("latestProduct", latestProduct);

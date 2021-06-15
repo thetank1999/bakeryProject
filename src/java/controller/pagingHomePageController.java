@@ -15,8 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import product.productDAO;
 import product.productDTO;
+import user.userDTO;
 
 /**
  *
@@ -39,21 +41,25 @@ public class pagingHomePageController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         //step 1: get data from dao
-        productDAO proDao= new productDAO();
+        productDAO proDao = new productDAO();
         categoryDAO cateDao = new categoryDAO();
         String indexString = request.getParameter("index");
+        if (indexString == null) {
+            indexString = "1";
+        }
         int index = Integer.parseInt(indexString);
-        
+        HttpSession session = request.getSession();
+        userDTO u = (userDTO) session.getAttribute("user");
+        session.setAttribute("user", u);
         List<productDTO> list = proDao.getProductBy6(index);
         List<categoryDTO> listCate = cateDao.getAllCategory();
         productDTO latestProduct = proDao.getLastestProduct();
-        int productQuantity = proDao.getProductQuatity();
         int maxPages = proDao.getMaxPagesBy6();
         // step 2: set data to jsp 
+        request.setAttribute("index", index);
         request.setAttribute("listP", list);
         request.setAttribute("listCate", listCate);
         request.setAttribute("latestProduct", latestProduct);
-        request.setAttribute("productQuantity", productQuantity);
         request.setAttribute("maxPages", maxPages);
         //request.setAttribute("tag", 0);
         request.getRequestDispatcher("Home.jsp").forward(request, response);

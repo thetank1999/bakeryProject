@@ -8,14 +8,11 @@ package user;
 import database.dBContext;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
-import java.sql.Date;
 //import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import static user.validation.encryptPassword;
 
@@ -123,7 +120,46 @@ public class userDAO {
 
         } catch (Exception e) {
         }
+        
     }
+
+    
+
+    public userDTO getUserByEmail(String email) {
+        String query = "select * from [user]\n"
+                + "where [email]= ?\n";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, email);
+
+            rs = ps.executeQuery();
+            while (rs.next()) {
+             userDTO   u = new userDTO(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9),
+                        rs.getInt(10));
+
+                return u;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public static void main(String[] args) {
+        userDAO uD= new userDAO();
+        userDTO u = uD.getUserByEmail("thanhTest3@gmail.com");
+        System.out.println(u);
+    }
+   
+}
 
 //    public void addRole(int roleID, String Name) {
 //        String query = "insert into [role]\n"
@@ -138,7 +174,6 @@ public class userDAO {
 //        }
 //
 //    }
-
 //    public static void main(String[] args) throws NoSuchAlgorithmException {
 //        userDAO dao = new userDAO();
 //        String password = "12345678";
@@ -153,7 +188,6 @@ public class userDAO {
 //        System.out.println(date);
 //        System.out.println(enPass);
 //    }
-
 //    public static void main(String[] args) {
 //        String a = "admin@fpt.edu.vn";
 //        userDAO dao = new userDAO();
@@ -182,5 +216,4 @@ public class userDAO {
 //        } catch (Exception e) {
 //        }
 //        return list;
-//    }
-}
+//    }}

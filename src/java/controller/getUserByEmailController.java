@@ -5,27 +5,23 @@
  */
 package controller;
 
-import category.categoryDAO;
-import category.categoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import product.productDAO;
-import product.productDTO;
+import user.userDAO;
 import user.userDTO;
 
 /**
  *
  * @author theta
  */
-@WebServlet(name = "manageProductController", urlPatterns = {"/manageProduct"})
-public class manageProductController extends HttpServlet {
+@WebServlet(name = "getUserByEmailController", urlPatterns = {"/getUserByEmail"})
+public class getUserByEmailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,26 +36,14 @@ public class manageProductController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        productDAO proDao = new productDAO();
-        categoryDAO cateDao = new categoryDAO();
-        String indexString = request.getParameter("index");
-        if (indexString == null) {
-            indexString = "1";
-        }
-        int maxPages = proDao.getMaxPagesBy6();
-        int index = Integer.parseInt(indexString);
         HttpSession session = request.getSession();
-        userDTO u = (userDTO) session.getAttribute("user");
-
-        List<categoryDTO> listC = cateDao.getAllCategory();
-        List<productDTO> listP = proDao.getProductBy6(index);
-        request.setAttribute("listC", listC);
-        request.setAttribute("listP", listP);
-        request.setAttribute("maxPages", maxPages);
-        request.setAttribute("index", index);
-        session.setAttribute("user", u);
-        request.getRequestDispatcher("manageProduct.jsp").forward(request, response);
-
+        userDTO userSession = (userDTO) session.getAttribute("user");
+        String email = userSession.getEmail();
+        userDTO user = userDAO.getUserByEmail(email);
+               
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

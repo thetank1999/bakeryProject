@@ -50,51 +50,66 @@
                 </div>
             </div>
         </nav>
-        <jsp:include page="slider.html"></jsp:include>  
+        <%--<jsp:include page="slider.html"></jsp:include> --%>  
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading"><b>SWP</b> Bakery </h1>
+                <p class="lead text-muted mb-0">High Quality Products Only</p>
+            </div>
+        </section>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                        </ol>
+                    </nav>
+                </div>
+            </div>
             <div id="logreg-forms">
                 <form class="form-signin" action="login" method="post">
                     <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
                     <p class="text-danger">${mess}</p>
-                <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
-                <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
+                    <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
-                <div class="form-group form-check">
-                    <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                </div>
+                    <div class="form-group form-check">
+                        <input name="remember" value="1" type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                    </div>
 
-                <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-                <hr>
-                <a href="signUp.jsp" class=""><button class="btn btn-primary btn-block" type="button"><i class="fas fa-user-plus"></i> Sign up New Account</button></a>
-            </form>
+                    <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+                    <hr>
+                    <a href="signUp.jsp" class=""><button class="btn btn-primary btn-block" type="button"><i class="fas fa-user-plus"></i> Sign up New Account</button></a>
+                </form>
 
 
-            <br>
+                <br>
 
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <!--        <script>
-                    function toggleResetPswd(e) {
-                        e.preventDefault();
-                        $('#logreg-forms .form-signin').toggle() // display:block or none
-                        $('#logreg-forms .form-reset').toggle() // display:block or none
-                    }
-        
-                    function toggleSignUp(e) {
-                        e.preventDefault();
-                        $('#logreg-forms .form-signin').toggle(); // display:block or none
-                        $('#logreg-forms .form-signup').toggle(); // display:block or none
-                    }
-        
-                    $(() => {
-                        // Login Register Form
-                        $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
-                        $('#logreg-forms #cancel_reset').click(toggleResetPswd);
-                        $('#logreg-forms #btn-signup').click(toggleSignUp);
-                        $('#logreg-forms #cancel_signup').click(toggleSignUp);
-                    })
-                </script>-->
-        <jsp:include page="Footer.jsp"></jsp:include>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <!--        <script>
+                        function toggleResetPswd(e) {
+                            e.preventDefault();
+                            $('#logreg-forms .form-signin').toggle() // display:block or none
+                            $('#logreg-forms .form-reset').toggle() // display:block or none
+                        }
+            
+                        function toggleSignUp(e) {
+                            e.preventDefault();
+                            $('#logreg-forms .form-signin').toggle(); // display:block or none
+                            $('#logreg-forms .form-signup').toggle(); // display:block or none
+                        }
+            
+                        $(() => {
+                            // Login Register Form
+                            $('#logreg-forms #forgot_pswd').click(toggleResetPswd);
+                            $('#logreg-forms #cancel_reset').click(toggleResetPswd);
+                            $('#logreg-forms #btn-signup').click(toggleSignUp);
+                            $('#logreg-forms #cancel_signup').click(toggleSignUp);
+                        })
+                    </script>-->
+            <jsp:include page="Footer.jsp"></jsp:include>
     </body>
 </html>

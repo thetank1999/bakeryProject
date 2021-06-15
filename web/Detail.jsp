@@ -45,6 +45,22 @@
     </head>
     <body>
         <jsp:include page="Menu.jsp"></jsp:include>
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1 class="jumbotron-heading"><b>SWP</b> Bakery </h1>
+                    <p class="lead text-muted mb-0">High Quality Products Only</p>
+                </div>
+            </section>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="container">
@@ -58,14 +74,14 @@
                                                 <article class="gallery-wrap"> 
                                                     <div class="img-big-wrap">
                                                         <div> <a href="#"><img src="${p.thumbNailLink}" alt="Card image cap"></a></div>
-                                                    </div> <!-- slider-product.// -->
-                                                    <div class="img-small-wrap">
-                                                    </div> <!-- slider-nav.// -->
-                                                </article> <!-- gallery-wrap .end// -->
-                                            </aside>
-                                            <aside class="col-sm-7">
-                                                <article class="card-body p-5">
-                                                    <h3 class="title mb-3">${p.name}</h3>
+                                                </div> <!-- slider-product.// -->
+                                                <div class="img-small-wrap">
+                                                </div> <!-- slider-nav.// -->
+                                            </article> <!-- gallery-wrap .end// -->
+                                        </aside>
+                                        <aside class="col-sm-7">
+                                            <article class="card-body p-5">
+                                                <h3 class="title mb-3">${p.name}</h3>
 
                                                 <p class="price-detail-wrap"> 
                                                     <span class="price h3 text-warning"> 
@@ -103,10 +119,31 @@
                                         </aside> <!-- col.// -->
                                     </div> <!-- row.// -->
                                 </div> <!-- card.// -->
-
+                                <ul class="pagination">
+                                    <c:forEach begin="1" end="${maxPages}" var="i">
+                                        <li class="page-item"><a class="page-link" href="paging?index=${i}">${i}</a></li>
+                                        </c:forEach>
 
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+
+                                </ol>
+
+                            </nav> 
+
+                        </div>
+                        <div class="clearfix">
+
+
+                        </div>
+
                     </div>
                 </div>
                 <jsp:include page="Footer.jsp"></jsp:include>

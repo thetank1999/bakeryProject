@@ -43,17 +43,25 @@ public class categoryController extends HttpServlet {
         String cateID = request.getParameter("cateID");
         productDAO proDao= new productDAO();
         categoryDAO cateDao = new categoryDAO();
+        String indexString = request.getParameter("index");
+        if (indexString == null){
+            indexString = "1";
+        }
+        int index = Integer.parseInt(indexString);
+                
         
         
-        List<productDTO> listById = proDao.getAllProductByCateID(cateID);
+        List<productDTO> listById = proDao.getProductByCategoryBy6(index, cateID);
         List<categoryDTO> listCate = cateDao.getAllCategory();
         productDTO latestProduct = proDao.getLastestProduct();
-        
+        int maxPages = proDao.getMaxPagesByCategoryBy6(cateID);
+        request.setAttribute("index", index);
         request.setAttribute("listCate", listCate);
         request.setAttribute("latestProduct", latestProduct);
         request.setAttribute("listP", listById);
-        request.setAttribute("act", cateID);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
+        request.setAttribute("cateID", cateID);
+        request.setAttribute("maxPages", maxPages);
+        request.getRequestDispatcher("category.jsp").forward(request, response);
 
     }
 

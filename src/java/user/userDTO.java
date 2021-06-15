@@ -113,5 +113,10 @@ public class userDTO {
         this.roleID = roleID;
     }
 
+    @Override
+    public String toString() {
+        return "userDTO{" + "email=" + email + ", password=" + password + ", avatarLink=" + avatarLink + ", address=" + address + ", fullName=" + fullName + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", creationDate=" + creationDate + ", status=" + status + ", roleID=" + roleID + '}'+"\n";
+    }
+
     
 }
