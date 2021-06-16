@@ -125,7 +125,7 @@ public class userDAO {
 
     
 
-    public userDTO getUserByEmail(String email) {
+     public userDTO getUserByEmail(String email) {
         String query = "select * from [user]\n"
                 + "where [email]= ?\n";
         try {

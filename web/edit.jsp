@@ -93,8 +93,8 @@
                                         <div class="form-group">
                                             <label>Status</label>
                                             <select name="status" class="form-select" aria-label="Default select example">
-                                                <option value="true">True</option>
-                                                <option value="fase">False</option>
+                                                <option value="true" test="${p.status == true ? "selected": ""}">True</option>
+                                                <option value="false" test="${p.status == false ? "selected": ""}">False</option>
                                                 <option value="null">NULL</option>
                                             </select>
                                         </div>
@@ -102,8 +102,8 @@
                                         <div class="form-group">
                                             <label>Sale Status</label>
                                             <select name="saleStatus" class="form-select" aria-label="Default select example">
-                                                <option value="true">True</option>
-                                                <option value="fase">False</option>
+                                                <option value="true" test="${p.saleStatus == true ? "selected": ""}">True</option>
+                                                <option value="false" test="${p.saleStatus == false ? "selected": ""}">False</option>
                                                 <option value="null">NULL</option>
                                             </select>
                                         </div>

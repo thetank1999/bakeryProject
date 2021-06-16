@@ -95,6 +95,9 @@
                                         <!--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>-->
                                     </td>
                                 </tr>
+                                <td>
+                                        <a href="#"  class="edit" data-toggle="modal">Edit</a>                                     
+                                    </td>
                             </c:forEach>
                         </tbody>
 

@@ -20,8 +20,8 @@ import user.userDTO;
  *
  * @author theta
  */
-@WebServlet(name = "getUserByEmailController", urlPatterns = {"/getUserByEmail"})
-public class getUserByEmailController extends HttpServlet {
+@WebServlet(name = "getUserByEmailController", urlPatterns = {"/getMyProfile"})
+public class getMyProfile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,19 @@ public class getUserByEmailController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        
         HttpSession session = request.getSession();
         userDTO userSession = (userDTO) session.getAttribute("user");
+        
         String email = userSession.getEmail();
-        userDTO user = userDAO.getUserByEmail(email);
+        String password = userSession.getPassword();
+        String avatarLink = userSession.getAvatarLink();
+        String address = userSession.getAddress();
+        String fullName = userSession.getFullName();
+        String phoneNumber = userSession.getPhoneNumber();
+        String gender = userSession.getGender();
+        
+        request.getRequestDispatcher("myProfile.jsp").forward(request, response);
                
         
         

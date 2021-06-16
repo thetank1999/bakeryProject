@@ -94,6 +94,7 @@
                                         <a href="delete?pID=${o.id}" class="delete" data-toggle="modal">Delete</a>
                                         <!--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>-->
                                     </td>
+                                    
                                 </tr>
                             </c:forEach>
                         </tbody>

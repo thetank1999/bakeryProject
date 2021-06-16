@@ -46,26 +46,23 @@
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="${o.thumbNailLink}" alt="Card image cap">
+                                    <img class="card-img-top" src="${o.thumbNailLink}" alt="Card image cap" width="270px" height="180px">
                                     <div class="card-body">
                                         <h4 class="card-title show_txt"><a href="detail?pID=${o.id}" title="View Product">${o.name}</a></h4>
                                         <p class="card-text show_txt">${o.details}
                                         </p>
                                         <div class="row">
-                                            <c:if test="${o.originalSalePrice < o.salePrice}">
-
-                                                <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p> 
-                                                <p class="btn  btn-block"><del>${o.salePrice}</del> VND</p>
-
+                                            <c:if test="${o.saleStatus == true}">
+                                                <div style="margin: auto;">
+                                                    <p class="btn btn-danger btn-block">${o.salePrice} VND</p>
+                                                </div>
                                             </c:if>
-
-                                            <c:if test="${o.originalSalePrice >= o.salePrice}">
-
-                                                <p class="btn btn-danger btn-block">${o.salePrice} VND</p>
-                                                <p class="btn  btn-block"> </p> 
-
+                                            <c:if test="${productDto.saleStatus == false}">
+                                                <div style="margin: auto;">
+                                                    <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p>
+                                                </div>
                                             </c:if>
-                                            <div class="col">
+                                            <div style="margin: auto;">
                                                 <a href="#" class="btn btn-success btn-block">Add to cart</a>
                                             </div>
                                         </div>

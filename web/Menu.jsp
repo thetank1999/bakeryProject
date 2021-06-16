@@ -28,10 +28,15 @@
                         <a class="nav-link" href="#">Manage Order</a>
                     </li>
                 </c:if>   
-                <c:if test="${sessionScope.user != null}">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Profile</a>
-                    </li>
+                
+                    <c:if test="${sessionScope.user != null}">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="getMyProfile">My Profile</a>
+                            
+                        </li>
+                        
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="#">Hello ${sessionScope.user.fullName}</a>
                     </li>
@@ -39,7 +44,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="logOut">Logout</a>
                     </li>
-                </c:if>
+                </c:if> 
                 <c:if test="${sessionScope.user == null}">
                     <li class="nav-item">
                         <a class="nav-link" href="Login.jsp">Login</a>
