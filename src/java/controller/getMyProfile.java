@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import product.productDAO;
 import user.userDAO;
 import user.userDTO;
 
@@ -36,23 +37,16 @@ public class getMyProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
-        
+        userDAO userDao = new userDAO();
         HttpSession session = request.getSession();
         userDTO userSession = (userDTO) session.getAttribute("user");
         
         String email = userSession.getEmail();
-        String password = userSession.getPassword();
-        String avatarLink = userSession.getAvatarLink();
-        String address = userSession.getAddress();
-        String fullName = userSession.getFullName();
-        String phoneNumber = userSession.getPhoneNumber();
-        String gender = userSession.getGender();
+        userDTO u = userDao.getUserByEmail(email);
+        request.setAttribute("uDTO", u);
         
         request.getRequestDispatcher("myProfile.jsp").forward(request, response);
-               
-        
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

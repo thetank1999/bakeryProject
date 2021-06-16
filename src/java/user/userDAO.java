@@ -65,7 +65,7 @@ public class userDAO {
     public boolean getUserExistency(String email) {
         String query = "select * from [user]\n"
                 + "where [email]= ?\n";
-        userDTO u = new userDTO();
+        userDTO u;
         try {
             conn = new dBContext().getConnection();
             ps = conn.prepareStatement(query);
@@ -120,12 +120,10 @@ public class userDAO {
 
         } catch (Exception e) {
         }
-        
+
     }
 
-    
-
-     public userDTO getUserByEmail(String email) {
+    public userDTO getUserByEmail(String email) {
         String query = "select * from [user]\n"
                 + "where [email]= ?\n";
         try {
@@ -135,7 +133,7 @@ public class userDAO {
 
             rs = ps.executeQuery();
             while (rs.next()) {
-             userDTO   u = new userDTO(
+                userDTO u = new userDTO(
                         rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
@@ -153,12 +151,81 @@ public class userDAO {
         }
         return null;
     }
-    public static void main(String[] args) {
-        userDAO uD= new userDAO();
-        userDTO u = uD.getUserByEmail("thanhTest3@gmail.com");
-        System.out.println(u);
+    public List<userDTO> getAllUser() {
+        List<userDTO> list = new ArrayList<>();
+        String query = "select * from [user]";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new userDTO(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getDate(8),
+                        rs.getInt(9),
+                        rs.getInt(10)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
-   
+    public static void main(String[] args) {
+        userDAO uD = new userDAO();
+        String email ="thanhTest3@gmail.com";
+        String password ="1";
+        String avatarLink ="2";
+        String address ="3";
+        String fullName ="admin";
+        String phoneNumber ="1234567890";
+        String gender ="male";
+        Date creationDate =uD.getCurrentDate();
+        int status=1;
+        int roleID = 2;
+        //uD.editMyProfile(email, password, avatarLink, address, fullName, phoneNumber, gender, creationDate, 0, 0);
+        System.out.println(uD.getUserByEmail(email));
+    }
+    
+    public void editMyProfile(String email, String password, String avatarLink, String address, String fullName, String phoneNumber, String gender, Date creationDate, int status, int roleId){
+        String query = "update [user]\n"
+                + "set [password] = ?, \n" //1
+                + "[avatarLink] = ?, \n"    //2
+                + "[address]= ?, \n"    //3
+                + "[fullName]=?, \n"    //4
+                + "[phoneNumber]=?, \n"     //5
+                + "[gender]=?, \n"  //6
+                + "[creationDate]= ?, \n" //7
+                + "[status]= ?, \n"     //8
+                + "[roleID]= ? \n"     //9
+                + "where [email]= ?";   //10
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            
+            ps.setString(1, password);
+            ps.setString(2, avatarLink);
+            ps.setString(3, address);
+            ps.setString(4, fullName);
+            ps.setString(5, phoneNumber);
+            ps.setString(6, gender);
+            ps.setDate(7, creationDate);
+            ps.setInt(8, status);
+            ps.setInt(9, roleId);
+            ps.setString(10, email);
+            ps.executeQuery();
+        } catch (Exception e) {
+        }
+          
+        
+    }
+
+    
+
 }
 
 //    public void addRole(int roleID, String Name) {
@@ -193,27 +260,4 @@ public class userDAO {
 //        userDAO dao = new userDAO();
 //        System.out.println(dao.getUserExistency(a));
 //    }
-//    public List<userDTO> getAllUser() {
-//        List<userDTO> list = new ArrayList<>();
-//        String query = "select * from [user]";
-//        try {
-//            conn = new dBContext().getConnection();
-//            ps = conn.prepareStatement(query);
-//            rs = ps.executeQuery();
-//            while (rs.next()) {
-//                list.add(new userDTO(
-//                        rs.getString(1),
-//                        rs.getString(2),
-//                        rs.getString(3),
-//                        rs.getString(4),
-//                        rs.getString(5),
-//                        rs.getString(6),
-//                        rs.getString(7),
-//                        rs.getDate(8),
-//                        rs.getInt(9),
-//                        rs.getInt(10)));
-//            }
-//        } catch (Exception e) {
-//        }
-//        return list;
-//    }}
+    //}

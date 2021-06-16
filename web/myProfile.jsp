@@ -56,14 +56,18 @@
                                 <h2>Manage <b>My Profile</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                <a href="manageProduct"><button type="button" class="btn btn-success">Back</button></a>
+
+                                <a href="home"><button type="button" class="btn btn-success">Back to home</button></a>
                             </div>
+                            <div class="modal-body">
+                                    <a href="#"><button type="button" class="btn btn-success">Change My Password</button></a>
+                                </div>
                         </div>
                     </div>
                     <div id="editProduct" class="">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form action="edit" method="post">
+                                <form action="editMyProfile" method="post">
                                     <div class="modal-header">						
                                         <h4 class="modal-title">My Information</h4>
 
@@ -72,58 +76,59 @@
                                         <div class="form-group"> 
                                             <label>Avatar</label> 
                                             <br>
-                                            <img src="${sessionScope.user.avatarLink}" alt="Card image cap">
-                                            <textarea name="fullName" class="form-control">${sessionScope.user.avatarLink}</textarea>
+                                            <img src="${uDTO.avatarLink}" alt="Card image cap">
+                                            <textarea name="avatarLink" class="form-control">${uDTO.avatarLink}</textarea>
 
                                         </div>
                                         <div class="form-group">
                                             <label>Full Name</label> 
-                                            <input value="${sessionScope.user.fullName}" name="fullName" type="text" class="form-control" required>
+                                            <input value="${uDTO.fullName}" name="fullName" type="text" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Email Address</label>
-                                            <input value="${sessionScope.user.email}" name="email" type="text" class="form-control" readonly>
+                                            <input value="${uDTO.email}" name="email" type="text" class="form-control" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input value="${sessionScope.user.password}" name="password" type="password" class="form-control" readonly>
+                                            <input value="${uDTO.password}" name="password" type="password" class="form-control" readonly>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <input value="${sessionScope.user.address}" name="address" type="text" class="form-control" required>
+                                            <input value="${uDTO.address}" name="address" type="text" class="form-control" required>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Phone Number</label>
-                                            <input value="${sessionScope.user.phoneNumber}" name="phoneNumber" type="text" class="form-control" required>
+                                            <input value="${uDTO.phoneNumber}" name="phoneNumber" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date of Creation</label>
+                                            <input value="${uDTO.creationDate}" name="creationDate" type="date" class="form-control" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label>Gender</label>
                                             <select name="gender" class="form-select" aria-label="Default select example">
-                                                <option value="male" test="${sessionScope.user.gender.equalsIgoreCase("male") ? "selected" : ""}">Male</option>
-                                                <option value="female" test="${sessionScope.user.gender.equalsIgoreCase("female") ? "selected" : ""}">Female</option>
+                                                <option value="male" ${uDTO.equalsIgoreCase("male") ? "selected" : ""}>Male</option>
+                                                <option value="female" ${uDTO.equalsIgoreCase("female") ? "selected" : ""}>Female</option>
                                                 <option value="notSay">Don't want to say</option>
                                             </select>
 
                                         </div>
                                         <div>
-                                            <tbody>
-                                            <td>
-                                            <p style="text-align: right" ><a href="#" class="edit jumbotron-heading" data-toggle="modal">Edit My Information</a> </p>
-                                            </td>
-                                            <p style="text-align: right">
-                                                <a href="#" class="edit jumbotron-heading" data-toggle="modal">Change my password</a>
-                                            </p>
-                                            </tbody>
+
                                         </div>
-                                        
+
 
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-success">Back to home</button>
-                                    </div>
+
                                 </form>
+                                <div class="col-sm-6">
+                                    <input type="submit"class="btn btn-info" value="Save Changes" readonly>
+                                    <a href="home"><input type="button" class="btn btn-default" value="Cancel" readonly></a>
+                                    <br>
+                                    </div>
+                                
                             </div>
                         </div>
                     </div>
