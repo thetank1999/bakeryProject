@@ -41,7 +41,7 @@ public class editMyProfileController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         userDTO u = (userDTO) session.getAttribute("user");
@@ -58,12 +58,12 @@ public class editMyProfileController extends HttpServlet {
         int status = u.getStatus();
         int roleId = u.getRoleID();
         userDAO.editMyProfile(email, password, avatarLink, address, fullName, phoneNumber, gender, creationDate, status, roleId);
-        
+
         request.setAttribute("uDTO", u);
-        session.setAttribute("user", u);
-        request.getRequestDispatcher("getMyProfile").forward(request, response);
-        //       try (PrintWriter out = response.getWriter()) {
-        /* TODO output your page here. You may use following sample code. */
+        //session.setAttribute("user", u);
+        request.getRequestDispatcher("myProfile.jsp").forward(request, response);
+//        try (PrintWriter out = response.getWriter()) {
+//
 //            out.println("<!DOCTYPE html>");
 //            out.println("<html>");
 //            out.println("<head>");
@@ -80,7 +80,7 @@ public class editMyProfileController extends HttpServlet {
 //            out.println("<h1>" + creationDate + "</h1>");
 //            out.println("<h1>" + status + "</h1>");
 //            out.println("<h1>" + roleId + "</h1>");
-//            out.println("<h1>"+ gender+"</h1>");
+//            out.println("<h1>" + gender + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        }

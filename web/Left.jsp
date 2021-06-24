@@ -5,7 +5,7 @@
                                     <div class="card-header bg-primary text-white text-uppercase"><i class="fa fa-list"></i> Categories </div>
                                     <ul class="list-group category_block">
                                         <c:forEach items="${listCate}" var="c">
-                                        <li class="list-group-item text-white ${cateID == c.id ? "active":""}"><a href="category?cateID=${c.id}">${c.name}</a></li>
+                                        <li class="list-group-item text-white" ${cateID == c.id ? "active":""}><a href="category?cateID=${c.id}">${c.name}</a></li>
                                         </c:forEach>
 
                                 </ul>

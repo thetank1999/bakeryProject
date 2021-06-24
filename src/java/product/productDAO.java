@@ -25,6 +25,70 @@ public class productDAO {
     PreparedStatement ps = null;// execute SQL query
     ResultSet rs = null;// return data
 
+    public static void main(String[] args) {
+        productDAO dao = new productDAO();
+        System.out.println(dao.searchMenuMaxPagesBy6("lá ngón"));
+        System.out.println(dao.searchMenuProductBy6("lá ngón", 2));
+    }
+        
+    public List<productDTO> searchMenuProductBy6(String searchMenu, int index) {
+        List<productDTO> list = new ArrayList<>();
+        String query = "select * from [Product]\n"
+                + "where [Name] like ?\n"
+                + "order by [Id]\n"
+                + "offset ? row\n"
+                + "fetch first 6 rows only";
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%" + searchMenu + "%");
+            ps.setInt(2, (index-1)*6);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new productDTO(
+                        rs.getInt(1), //id
+                        rs.getString(2), // name
+                        rs.getString(3), // cateID
+                        rs.getString(4), //thumbnail
+                        rs.getString(5), //uploader
+                        rs.getInt(6), // lowerPrice
+                        rs.getInt(7), // higherPrice
+                        rs.getString(8), // detail
+                        rs.getBoolean(9), // status
+                        rs.getBoolean(10),// saleStatus
+                        rs.getInt(11) // stock
+                ));
+
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
+    
+    public int searchMenuMaxPagesBy6(String searchMenu){
+        String query = "select count(*) from [Product]"
+                + "where [Name] like ?";
+
+        try {
+            conn = new dBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, "%"+searchMenu+ "%");
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                int total = rs.getInt(1);
+                int countPage = 0;
+                countPage = total / 6;
+                if (total % 6 != 0) {
+                    countPage++;
+                }
+                return countPage;
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
     public List<productDTO> getAllProduct() {
         List<productDTO> list = new ArrayList<>();
         String query = "select * from Product";
@@ -252,8 +316,8 @@ public class productDAO {
         }
         return 0;
     }
-    
-    public int getMaxPagesByCategoryBy6(String cateID){
+
+    public int getMaxPagesByCategoryBy6(String cateID) {
         String query = "select count(*) from [Product] \n"
                 + "where [CategoryID]= ?";
 
@@ -287,7 +351,7 @@ public class productDAO {
             conn = new dBContext().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, cateID);
-            ps.setInt(2, (index-1)*6);
+            ps.setInt(2, (index - 1) * 6);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new productDTO(
@@ -315,7 +379,6 @@ public class productDAO {
 //        System.out.println(list);
 //        
 //    }
-    
 
     public List<productDTO> getProductBy6(int index) {
         List<productDTO> list = new ArrayList<>();
@@ -326,7 +389,7 @@ public class productDAO {
         try {
             conn = new dBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setInt(1, (index-1)*6);
+            ps.setInt(1, (index - 1) * 6);
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new productDTO(
