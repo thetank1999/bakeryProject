@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-
+        <c:if test="${sessionScope.user.roleID > -1}">
             <div class="container">
                 <div class="table-wrapper">
                     <div class="table-title">
@@ -77,50 +77,51 @@
                                             <label>Avatar</label> 
                                             <br>
                                             <img src="${uDTO.avatarLink}" alt="Card image cap">
-                                        <textarea name="avatarLink" class="form-control">${uDTO.avatarLink}</textarea>
+                                            <textarea name="avatarLink" class="form-control">${uDTO.avatarLink}</textarea>
 
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Full Name</label> 
-                                        <input value="${uDTO.fullName}" name="fullName" type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email Address</label>
-                                        <input value="${uDTO.email}" name="email" type="text" class="form-control" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input value="${uDTO.password}" name="password" type="password" class="form-control" readonly>
-                                    </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Full Name</label> 
+                                            <input value="${uDTO.fullName}" name="fullName" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email Address</label>
+                                            <input value="${uDTO.email}" name="email" type="text" class="form-control" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input value="${uDTO.password}" name="password" type="password" class="form-control" readonly>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <input value="${uDTO.address}" name="address" type="text" class="form-control" required>
-                                    </div>
+                                        <div class="form-group">
+                                            <label>Address</label>
+                                            <input value="${uDTO.address}" name="address" type="text" class="form-control" required>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input value="${uDTO.phoneNumber}" name="phoneNumber" type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Date of Creation</label>
-                                        <input value="${uDTO.creationDate}" name="creationDate" type="date" class="form-control" readonly>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Gender</label>
-                                        <select name="gender" class="form-select" aria-label="Default select example">
-                                            <option value="male" ${uDTO.gender.equalsIgoreCase("male") ? "selected" : ""}>Male</option>
-                                            <option value="female" ${uDTO.gender.equalsIgoreCase("female") ? "selected" : ""}>Female</option>
-                                            <option value="notSay">Don't want to say</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label>Phone Number</label>
+                                            <input value="${uDTO.phoneNumber}" name="phoneNumber" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date of Creation</label>
+                                            <input value="${uDTO.creationDate}" name="creationDate" type="date" class="form-control" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Gender</label>
+                                            <select name="gender" class="form-select" aria-label="Default select example">
+                                                <option value="male" ${uDTO.gender.equalsIgoreCase("male") ? "selected" : ""}>Male</option>
+                                                <option value="female" ${uDTO.gender.equalsIgoreCase("female") ? "selected" : ""}>Female</option>
+                                                <option value="notSay">Don't want to say</option>
+                                            </select>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="submit"class="btn btn-info" value="Save Changes" readonly>
-                                    <a href="home"><input type="button" class="btn btn-default" value="Cancel" readonly></a>
-                                    <br>
-                                </div>
+                                    <div class="col-sm-6">
+                                        <input type="submit"class="btn btn-info" value="Save Changes" readonly>
+                                        <a href="home"><input type="button" class="btn btn-default" value="Cancel" readonly></a>
+                                        <br>
+                                    </div>
+                                </c:if>
                             </form>
 
                             <br>

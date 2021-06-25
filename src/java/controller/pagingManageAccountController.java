@@ -7,17 +7,14 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import role.roleDAO;
+import role.roleDTO;
 import user.userDAO;
 import user.userDTO;
 
@@ -25,8 +22,8 @@ import user.userDTO;
  *
  * @author theta
  */
-@WebServlet(name = "editMyProfileController", urlPatterns = {"/editMyProfile"})
-public class editMyProfileController extends HttpServlet {
+@WebServlet(name = "pagingManageAccountController", urlPatterns = {"/pagingManageAccount"})
+public class pagingManageAccountController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,53 +33,40 @@ public class editMyProfileController extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.text.ParseException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ParseException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        request.setCharacterEncoding("UTF-8");
-        HttpSession session = request.getSession();
-        userDTO u = (userDTO) session.getAttribute("user");
-        userDAO userDAO = new userDAO();
-
-        String email = request.getParameter("email");
-        String fullName = request.getParameter("fullName");
-        String avatarLink = request.getParameter("avatarLink");
-        String password = request.getParameter("password");
-        String address = request.getParameter("address");
-        String phoneNumber = request.getParameter("phoneNumber");
-        Date creationDate = u.getCreationDate();
-        String gender = request.getParameter("gender");
-        int status = u.getStatus();
-        int roleId = u.getRoleID();
-        userDAO.editMyProfile(email, password, avatarLink, address, fullName, phoneNumber, gender, creationDate, status, roleId);
-
-        request.setAttribute("uDTO", u);
-        request.getRequestDispatcher("myProfile.jsp").forward(request, response);
 //        try (PrintWriter out = response.getWriter()) {
-//
+//            /* TODO output your page here. You may use following sample code. */
 //            out.println("<!DOCTYPE html>");
 //            out.println("<html>");
 //            out.println("<head>");
-//            out.println("<title>Servlet NewServlet1</title>");
+//            out.println("<title>Servlet pagingManageAccountController</title>");            
 //            out.println("</head>");
 //            out.println("<body>");
-//            out.println("<h1>Servlet NewServlet1 at " + request.getContextPath() + "</h1>");
-//            out.println("<h1>" + email + "</h1>");
-//            out.println("<h1>" + fullName + "</h1>");
-//            out.println("<h1>" + avatarLink + "</h1>");
-//            out.println("<h1>" + password + "</h1>");
-//            out.println("<h1>" + address + "</h1>");
-//            out.println("<h1>" + phoneNumber + "</h1>");
-//            out.println("<h1>" + creationDate + "</h1>");
-//            out.println("<h1>" + status + "</h1>");
-//            out.println("<h1>" + roleId + "</h1>");
-//            out.println("<h1>" + gender + "</h1>");
+//            out.println("<h1>Servlet pagingManageAccountController at " + request.getContextPath() + "</h1>");
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
+        request.setCharacterEncoding("UTF-8");
+        userDAO userDao = new userDAO();
+        roleDAO roleDao = new roleDAO();
+        String indexString = request.getParameter("index");
+        if (indexString == null) {
+            indexString = "1";
+        }
+        int maxPages = userDao.getMaxPagesUser();
+        int index = Integer.parseInt(indexString);
+
+        List<roleDTO> listR = roleDao.getAllRole();
+        List<userDTO> listU = userDao.getUserBy6(index);
+
+        request.setAttribute("listU", listU);
+        request.setAttribute("listR", listR);
+        request.setAttribute("maxPages", maxPages);
+        request.setAttribute("index", index);
+        request.getRequestDispatcher("manageAccount.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -97,11 +81,7 @@ public class editMyProfileController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(editMyProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -115,11 +95,7 @@ public class editMyProfileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (ParseException ex) {
-            Logger.getLogger(editMyProfileController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

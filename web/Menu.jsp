@@ -15,7 +15,7 @@
 
                 <c:if test="${sessionScope.user.roleID == 1}">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Manage Account</a>
+                        <a class="nav-link" href="manageAccount">Manage Account</a>
                     </li>
                 </c:if>
                 <c:if test="${sessionScope.user.roleID == 3}">

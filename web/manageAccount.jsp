@@ -39,8 +39,8 @@
                                 <h2>Manage <b>Account</b></h2>
                             </div>
                             <div class="col-sm-6">
-                                
-                                
+
+
 
 
                             </div>
@@ -55,17 +55,16 @@
                                         <label for="selectAll"></label>
                                     </span>
                                 </th>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Sale Price</th>
-                                <th>Original Price</th>
-                                <th>No. in Stock</th>
-                                <th>Actions</th>
+                                <th>Email</th>
+                                <th>Avatar</th>
+                                <th>Address</th>
+                                <th>Full Name</th>
+                                <th>Phone Number</th>
+                                <th>Role</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${listP}" var="o">
+                            <c:forEach items="${listU}" var="o">
 
                                 <tr>
                                     <td>
@@ -74,50 +73,53 @@
                                             <label for="checkbox1"></label>
                                         </span>
                                     </td>
-                                    <td>${o.id}</td>
-                                    <td>${o.name}</td>
+                                    <td>${o.email}</td>
                                     <td>
-                                        <img src="${o.thumbNailLink}" alt="Card image cap">
+                                        <img src="${o.avatarLink}" alt="Card image cap">
                                     </td>
-                                    <c:if test="${o.originalSalePrice < o.salePrice}">
-                                        <td>${o.originalSalePrice} VND</td>
-                                        <td><del>${o.salePrice}</del> VND</td>
-                                    </c:if>
-                                    <c:if test="${o.originalSalePrice >= o.salePrice}">
-                                        <td></td>
-                                        <td>${o.salePrice} VND</td>
-                                    </c:if>
-                                    <td>${o.stock}</td>
+                                    <td>${o.address} </td>
+                                    <td>${o.fullName}</td>
+                                    <td>${o.phoneNumber}</td>
+                                    <c:forEach items="${listR}" var="r">
+                                        <c:if test="${r.roleID== o.roleID}">
+                                            <td> ${r.roleName}</td>
+                                        </c:if>
+                                    </c:forEach>
+                                    
                                     <td>
-                                        <a href="#"  class="edit" data-toggle="modal">Edit</a> 
+                                        <a href="getUserData?uEmail=${o.email}"  class="edit" data-toggle="modal">Edit</a> 
                                         <!--                                        <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>-->
-                                        <a href="#" class="delete" data-toggle="modal">Delete</a>
+<!--                                        <a href="#" class="delete" data-toggle="modal">Delete</a>-->
                                         <!--                                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>-->
                                     </td>
                                 </tr>
-                                <td>
-                                        <a href="#"  class="edit" data-toggle="modal">Edit</a>                                     
-                                    </td>
                             </c:forEach>
                         </tbody>
 
                     </table>
-                    <!--                <div class="clearfix">
-                                        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                                        </ul>
-                                    </div>-->
-                    <a href="home"><button type="button" class="btn btn-success">Back to home</button></a>
+                    <div class="clearfix">
+                        <ul class="pagination">
+                            <c:forEach begin="1" end="${maxPages}" var="i">
+                                <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="pagingManageAccount?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
+                                </c:forEach>
+
+                        </ul>
+
+                    </div>
+
                 </div>
+                <a href="home"><button type="button" class="btn btn-success">Back to home</button></a>
 
-
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
             </div>
 
 
