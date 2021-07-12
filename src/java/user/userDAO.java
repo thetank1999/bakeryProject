@@ -62,6 +62,8 @@ public class userDAO {
 //        userDTO u = dao.login(userName, passWord);
 //        System.out.println(u);
 //    }
+    
+    
     public boolean getUserExistency(String email) {
         String query = "select * from [user]\n"
                 + "where [email]= ?\n";

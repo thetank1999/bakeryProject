@@ -3,16 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/manageAccountController.java</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/Menu.jsp</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/edit.jsp</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/manageAccount.jsp</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/pagingHomePageController.java</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/user/userDTO.java</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/homeController.java</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/pagingManageAccountController.java</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/manageProductController.java</file>
-            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/manageProduct.jsp</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/changePasswordController.java</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/myProfile.jsp</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/Home.jsp</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/getMyProfile.java</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/controller/signUpController.java</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/postDetail.jsp</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/postList.jsp</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/web/signUp.jsp</file>
+            <file>file:/D:/FPT/2021-Summer/SWP/keyProject/bakeryProject/src/java/user/userDAO.java</file>
         </group>
     </open-files>
 </project-private>

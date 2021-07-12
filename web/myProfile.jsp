@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,17 +10,15 @@
         <title>My Profile - SWP Bakery</title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-        <!--        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="css/manager.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        
 
         <style>
             img{
@@ -60,7 +59,7 @@
                                 <a href="home"><button type="button" class="btn btn-success">Back to home</button></a>
                             </div>
                             <div class="modal-body">
-                                <a href="#"><button type="button" class="btn btn-success">Change My Password</button></a>
+                                <a href="#changePasswordModal" class="btn btn-success" data-toggle="modal"><span>Change Password</span></a>
                             </div>
                         </div>
                     </div>
@@ -130,7 +129,38 @@
                 </div>
             </div>
         </div>
-
+        <!-- changePassword Modal HTML -->
+        <div id="changePasswordModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="changePassword" method="post">
+                        <div class="modal-header">						
+                            <h4 class="modal-title">Change Password</h4>
+                            <p class="text-danger">${mess}</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">					
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input name="currentPassword" type="password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input name="newPassword" type="password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Repeat New Password</label>
+                                <input name="re_newPassword" type="password" class="form-control" required>
+                            </div>					
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-info" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col">

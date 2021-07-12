@@ -14,3 +14,5 @@ offset 0 row
 fetch first 6 rows only
 
 select * from [Role]
+
+select * from [User]
