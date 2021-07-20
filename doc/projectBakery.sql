@@ -16,3 +16,13 @@ fetch first 6 rows only
 select * from [Role]
 
 select * from [User]
+------------------------
+select count (*) from [Post]
+------------------------
+select * from [Post]
+order by [Id]
+offset 0 rows
+fetch first 6 rows only 
+--------------
+select * from [Post]
+where id=1

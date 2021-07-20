@@ -32,7 +32,7 @@
                 </div>
             </div>               
             <div class="container">
-            <div class="row">
+                <div class="row">
                 <jsp:include page="Left.jsp"></jsp:include>
 
                     <div class="col-sm-9">
@@ -40,54 +40,35 @@
                         <c:forEach items="${listP}" var="o">
                             <div class="col-12 col-md-6 col-lg-4">
                                 <div class="card">
-                                    <img class="card-img-top" src="${o.thumbNailLink}" alt="Card image cap" width="270px" height="180px">
+                                    <img class="card-img-top" src="${o.thumbnail}" alt="Card image cap" width="270px" height="180px">
                                     <div class="card-body">
-                                        <h4 class="card-title show_txt"><a href="detail?pID=${o.id}" title="View Product">${o.name}</a></h4>
+                                        <h4 class="card-title show_txt"><a href="getPostDetail?id=${o.id}" title="View Product">${o.title}</a></h4>
                                         <p class="card-text show_txt">${o.details}
                                         </p>
                                         <div class="row">
-                                            <c:if test="${o.saleStatus == true}">
-                                                <div style="margin: auto;">
-                                                    <p class="btn btn-danger btn-block">${o.salePrice} VND</p>
-                                                </div>
-                                            </c:if>
-                                            <c:if test="${productDto.saleStatus == false}">
-                                                <div style="margin: auto;">
-                                                    <p class="btn btn-danger btn-block">${o.originalSalePrice} VND</p>
-                                                </div>
-                                            </c:if>
-                                            <div style="margin: auto;">
-                                                <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </c:forEach>
-
                     </div>
-                    
-                        <ul class="pagination">
-                            <c:forEach begin="1" end="${maxPages}" var="i">
-                                <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="paging?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
-                                </c:forEach>
-
-                        </ul>
-                    
-                    
+                    <ul class="pagination">
+                        <c:forEach begin="1" end="${maxPages}" var="i">
+                            <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="paging?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
+                            </c:forEach>
+                    </ul>              
                 </div>
-
-
             </div>
-
-        </div>                                          
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                         </ol>
-                    </nav>
+                    </nav> 
+                </div>
+                <div class="clearfix">
                 </div>
             </div>
         </div>

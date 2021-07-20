@@ -70,39 +70,25 @@
                                 </div>
                             </div>
                         </c:forEach>
-
-                    </div>
-                    
-                        <ul class="pagination">
-                            <c:forEach begin="1" end="${maxPages}" var="i">
-                                <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="paging?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
-                                </c:forEach>
-
-                        </ul>
-                    
-                    
+                    </div>                 
+                    <ul class="pagination">
+                        <c:forEach begin="1" end="${maxPages}" var="i">
+                            <li class="page-item ${index == i ? "active": ""} "><a class="page-link" href="paging?index=${i}" ${index == i ? "active": ""}>${i}</a></li>
+                            </c:forEach>
+                    </ul>              
                 </div>
-
-
             </div>
-
         </div>
         <div class="container">
             <div class="row">
                 <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-
                         </ol>
-
                     </nav> 
-
                 </div>
                 <div class="clearfix">
-
-
                 </div>
-
             </div>
         </div>
         <jsp:include page="Footer.jsp"></jsp:include>

@@ -36,6 +36,10 @@
 
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="getPostList">Post List</a>
+
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="#">Hello ${sessionScope.user.fullName}</a>
@@ -46,6 +50,10 @@
                     </li>
                 </c:if> 
                 <c:if test="${sessionScope.user == null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="getPostList">Post List</a>
+
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Login.jsp">Login</a>
                     </li>
